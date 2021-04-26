@@ -1,10 +1,14 @@
-.page {
+.page__content {
     background-color: #202020;
     margin: 0;
     color: #fff;
 }
 
-.page__content {
+.page__content_promo {
+    background-color: #073042;
+}
+
+.page__section {
     max-width: 1140px;
     margin: 0 auto;
 }

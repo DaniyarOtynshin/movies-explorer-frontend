@@ -1,6 +1,22 @@
 @font-face {
     font-family: 'Inter';
     font-style:  normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url('./fonts/Inter-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('./fonts/Inter-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style:  normal;
     font-weight: 400;
     font-display: swap;
     src: url('./fonts/Inter-Regular.woff') format('woff');
