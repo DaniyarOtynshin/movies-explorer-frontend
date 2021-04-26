@@ -1,0 +1,38 @@
+.about-project {
+    font-family: 'Inter', sans-serif;
+    min-height: 608px;
+}
+
+.about-project__title {
+    margin: 110px 0 0 0;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    border-bottom: 1px solid #fff;
+    padding: 0 0 23px 0;
+}
+
+.about-project__info {
+    margin: 70px 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-project__description {
+    max-width: 550px;
+}
+
+.about-project__subtitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.about-project__paragraph {
+    margin: 26px 0 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
