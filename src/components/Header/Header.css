@@ -1,4 +1,20 @@
 .header {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 74px;
+}
+
+.menu__link {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 0 0 30px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu__link:nth-of-type(1) {
+    margin: 0;
 }
