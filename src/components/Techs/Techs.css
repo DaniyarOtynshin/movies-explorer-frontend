@@ -1,0 +1,10 @@
+.techs {
+    font-family: 'Inter', sans-serif;
+    background-color: #272727;
+    min-height: 625px;
+}
+
+.techs__title {
+    padding: 100px 0 23px 0;
+    margin: 0;
+}

@@ -4,8 +4,12 @@
     color: #fff;
 }
 
-.page__content_promo {
+.page__content_green {
     background-color: #073042;
+}
+
+.page__content_grey {
+    background-color: #272727;
 }
 
 .page__section {

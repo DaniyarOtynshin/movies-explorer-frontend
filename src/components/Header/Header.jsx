@@ -4,7 +4,7 @@ import logoPath from '../../images/logo.svg';
 
 const Header = (props) => {
     return (
-        <header className="page__content page__content_promo">
+        <header className="page__content page__content_green">
             <div className="header page__section">
                 <img src={ logoPath } alt="logo" className="header__logo logo"/>
                 <div className="header__menu menu">
