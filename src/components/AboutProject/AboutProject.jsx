@@ -6,15 +6,19 @@ const AboutProject = (props) => {
             <h2 className="about-project__title">
                 О проекте
             </h2>
-            <div className="about-project__info">
-                <div className="about-project__description">
-                    <h3 className="about-project__subtitle">Дипломный проект включал 5 этапов</h3>
-                    <p className="about-project__paragraph">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+            <div className="about-project__info info">
+                <div className="info__description">
+                    <h3 className="info__subtitle">Дипломный проект включал 5 этапов</h3>
+                    <p className="info__paragraph">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
                 </div>
-                <div className="about-project__description">
-                    <h3 className="about-project__subtitle">На выполнение диплома ушло 5 недель</h3>
-                    <p className="about-project__paragraph">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+                <div className="info__description">
+                    <h3 className="info__subtitle">На выполнение диплома ушло 5 недель</h3>
+                    <p className="info__paragraph">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
                 </div>
+            </div>
+            <div className="about-project__time-line time-line">
+                <div className="time-line__backend">1 неделя</div>
+                <div className="time-line__frontend">4 недели</div>
             </div>
         </div>
     )

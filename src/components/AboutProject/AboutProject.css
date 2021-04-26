@@ -14,25 +14,83 @@
 
 .about-project__info {
     margin: 70px 0 0 0;
+}
+
+.info {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.about-project__description {
+.info__description {
     max-width: 550px;
 }
 
-.about-project__subtitle {
+.info__subtitle {
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
     margin: 0;
 }
 
-.about-project__paragraph {
+.info__paragraph {
     margin: 26px 0 0 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+}
+
+.about-project__time-line {
+    margin: 110px 0 0 0;
+}
+
+.time-line {
+    width: 100%;
+    height: 36px;
+    background-color: #303030;
+    display: flex;
+}
+
+.time-line__backend {
+    background-color: #3DDC84;
+    flex: 0 1 228px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.time-line__frontend {
+    flex: 0 1 912px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.time-line__frontend::after {
+    content: "Front-end";
+    font-family: Arial, 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8B8B8B;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 14px);
+}
+
+.time-line__backend::after {
+    content: "Back-end";
+    font-family: Arial, 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8B8B8B;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 14px);
 }
