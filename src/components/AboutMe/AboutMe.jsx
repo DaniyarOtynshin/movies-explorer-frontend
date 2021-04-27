@@ -1,6 +1,7 @@
 import React from 'react';
 
 import photoPath from '../../images/photo.png';
+import Portfolio from '../Portfolio/Portfolio';
 
 const AboutMe = (props) => {
     return (
@@ -20,6 +21,7 @@ const AboutMe = (props) => {
                 </div>
                 <img src={ photoPath } alt="Моё фото" className="my-info__photo"/>
             </div>
+            <Portfolio />
         </div>
     )
 };
