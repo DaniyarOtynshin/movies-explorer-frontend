@@ -3,12 +3,14 @@ import Footer from '../Footer/Footer';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
 
 function App() {
   return (
     <div className="page__content">
       <Header />
-      <Main />
+      <Movies />
+      {/* <Main /> */}
       <Footer />
     </div>
   );
