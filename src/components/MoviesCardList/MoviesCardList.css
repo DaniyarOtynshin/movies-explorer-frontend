@@ -1,0 +1,38 @@
+.movies-card-list {
+    min-height: 458px;
+    padding: 70px 0 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 32px;
+}
+
+.movies-card-list__more {
+    min-height: 166px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more__button {
+    width: 320px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.52px;
+    color: #fff;
+    text-transform: capitalize;
+    background-color: transparent;
+    border-radius: 6px;
+    border: 1px solid #424242;
+}
+
+.more__button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
