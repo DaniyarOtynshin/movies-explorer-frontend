@@ -6,6 +6,11 @@
     height: 74px;
 }
 
+.menu {
+    display: flex;
+    align-items: center;
+}
+
 .menu__button {
     width: 76px;
     height: 32px;
@@ -25,7 +30,7 @@
 }
 
 .menu__link {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 16px;
     font-weight: 500;
     margin: 0 0 0 30px;
@@ -33,6 +38,50 @@
     color: #fff;
 }
 
+.menu__link_movies {
+    margin: 0 0 0 20px;
+}
+
+.menu__link_saved-films {
+    margin: 0 0 0 20px;
+    font-weight: 400;
+}
+
+.menu__link_profile {
+    margin: 0;
+}
+
 .menu__link:nth-of-type(1) {
     margin: 0;
+}
+
+.menu__link:nth-of-type(1) {
+    margin: 0;
+}
+
+.menu__profile-account {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 50px
+}
+
+.menu__profile {
+    display: inline-block;
+    margin: 0 0 0 17px;
+    width: 26px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #313131;
+    position: relative;
+}
+
+.menu__profile::before {
+    content: "";
+    background-image: url('../../images/profile.svg');
+    width: 11.5px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
 }
