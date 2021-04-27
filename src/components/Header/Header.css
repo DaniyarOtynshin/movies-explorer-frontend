@@ -1,15 +1,33 @@
 .header {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 74px;
 }
 
+.menu__button {
+    width: 76px;
+    height: 32px;
+    background-color: #3DDC84;
+    color: #000;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.menu__button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .menu__link {
     font-size: 12px;
     line-height: 16px;
+    font-weight: 500;
     margin: 0 0 0 30px;
     text-decoration: none;
     color: #fff;
