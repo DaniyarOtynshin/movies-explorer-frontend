@@ -46,3 +46,7 @@
 .filter-check-box__button:checked + .filter-check-box__checkbox {
     background-color: #8B8B8B;
 }
+
+.filter-check-box__checkbox:hover {
+    cursor: pointer;
+}

@@ -66,6 +66,16 @@
     background-color: #2BE080;
 }
 
+.card-info__remove {
+    width: 16px;
+    height: 16px;
+}
+
+.card-info__remove:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 .card-info__time {
     margin: 10px 0 0 12px;
     font-weight: 400;
