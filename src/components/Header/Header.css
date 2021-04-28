@@ -6,6 +6,11 @@
     height: 74px;
 }
 
+.logo {
+    width: 38px;
+    height: 38px;
+}
+
 .menu {
     display: flex;
     align-items: center;
@@ -36,6 +41,10 @@
     margin: 0 0 0 30px;
     text-decoration: none;
     color: #fff;
+}
+
+.menu__link:hover {
+    opacity: 0.8;
 }
 
 .menu__link_movies {

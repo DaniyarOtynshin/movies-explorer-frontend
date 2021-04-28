@@ -8,7 +8,7 @@ const Header = (props) => {
     return (
         <header className={ `page__content ${isMain ? "page__content_green" : "page__content_black"}` }>
             <div className="header page__section">
-                <img src={ logoPath } alt="logo" className="header__logo logo"/>
+                <a href="#"><img src={ logoPath } alt="logo" className="header__logo logo"/></a>
                 <div className="header__menu menu">
                     {
                         isMain

@@ -30,13 +30,18 @@
     margin: 0 20px 0 0;
 }
 
+
+.footer__link:last-child {
+    margin: 0;
+}
+
+.footer__link:hover {
+    opacity: 0.8;
+}
+
 .footer__copyright {
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
-    margin: 0;
-}
-
-.footer__link:last-child {
     margin: 0;
 }
