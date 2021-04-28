@@ -25,10 +25,10 @@
 }
 
 .login__button {
-    margin: 134px 0 0;
+    margin: 179px 0 0;
 }
 
-.login__login-button {
+.login__question {
     margin: 16px 0 70px;
     font-weight: 400;
     font-size: 14px;
@@ -42,4 +42,8 @@
     margin: 0;
     text-decoration: none;
     color: #4285F4;
+}
+
+.login__login-link:hover {
+    opacity: 0.8;
 }

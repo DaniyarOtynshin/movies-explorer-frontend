@@ -71,7 +71,12 @@
     outline: none;
 }
 
-.register__login-button {
+.button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.register__question {
     margin: 16px 0 70px;
     font-weight: 400;
     font-size: 14px;
@@ -85,4 +90,8 @@
     margin: 0;
     text-decoration: none;
     color: #4285F4;
+}
+
+.register__login-link:hover {
+    opacity: 0.8;
 }

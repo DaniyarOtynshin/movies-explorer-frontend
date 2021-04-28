@@ -14,7 +14,7 @@ const Register = (props) => {
                 <input type="password" className="register__input form-input"/>
                 <button className="register__button button">Зарегистрироваться</button>
             </form>
-            <p className="register__login-button">Уже зарегистрированы? <a className="register__login-link" href="#">Войти</a></p>
+            <p className="register__question">Уже зарегистрированы? <a className="register__login-link" href="#">Войти</a></p>
         </div>
     )
 };

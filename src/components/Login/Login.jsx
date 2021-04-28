@@ -12,7 +12,7 @@ const Login = (props) => {
                 <input type="password" className="login__input form-input"/>
                 <button className="login__button button">Войти</button>
             </form>
-            <p className="login__login-button">Еще не зарегистрированы? <a className="login__login-link" href="#">Регистрация</a></p>
+            <p className="login__question">Еще не зарегистрированы? <a className="login__login-link" href="#">Регистрация</a></p>
         </div>
     )
 };
