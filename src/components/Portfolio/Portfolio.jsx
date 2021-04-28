@@ -2,7 +2,7 @@ import React from 'react';
 
 const Portfolio = (props) => {
     return (
-        <div className="portfolio page__section">
+        <div className="portfolio">
             <h3 className="portfolio__title">Портфолио</h3>
             <div className="portfolio__links links">
                 <a href="#" className="links__link">Статичный сайт</a>

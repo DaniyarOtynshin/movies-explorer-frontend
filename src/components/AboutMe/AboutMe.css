@@ -1,6 +1,5 @@
 .about-me {
     font-family: 'Inter', sans-serif;
-    width: 100%;
     min-height: 1079px;
 }
 
@@ -20,6 +19,7 @@
 .my-info__description {
     display: flex;
     flex-direction: column;
+    max-width: 600px;
 }
 
 .my-info__name {
@@ -34,7 +34,6 @@
     font-size: 18px;
     line-height: 20px;
     margin: 18px 0 0 0;
-    max-width: 600px;
 }
 
 .my-info__paragraph {
@@ -42,7 +41,6 @@
     font-size: 14px;
     line-height: 22px;
     margin: 26px 0 0 0;
-    max-width: 600px;
 }
 
 .my-info__photo {
@@ -66,4 +64,95 @@
 
 .contacts__link:last-child {
     margin: 0;
+}
+
+@media (max-width: 1024px) {
+
+    .about-me__title {
+        margin: 90px 0 0;
+    }
+
+    .my-info__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .my-info__title {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 16px 0 0 0;
+    }
+
+    .my-info__paragraph {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        margin: 20px 0 0 0;
+    }
+
+    .my-info__description {
+        max-width: 364px;
+    }
+
+    .contacts {
+        margin: 87px 0 0 0;
+    }
+
+    .my-info__photo {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+@media (max-width: 748px) {
+
+    .about-me__my-info {
+        margin: 60px 0 0;
+    }
+
+    .my-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .my-info__photo {
+        order: 0;
+    }
+
+    .my-info__description {
+        margin: 40px 0 0;
+        order: 1;
+    }
+
+    .my-info__photo {
+        width: 292px;
+        height: 352px;
+    }
+
+    .my-info__name {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .my-info__title {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px 0 0 0;
+    }
+
+    .my-info__paragraph {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px 0 0 0;
+    }
+
+    .my-info__description {
+        max-width: 100%;
+    }
+
+    .contacts {
+        margin: 40px 0 0 0;
+    }
+
 }

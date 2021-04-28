@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutProject = (props) => {
     return (
-        <div className="about-project page__section">
+        <div className="about-project page__section page__section_body">
             <h2 className="about-project__title title">
                 О проекте
             </h2>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import logoPath from '../../images/logo.svg';
 
-const isMain = false;
+const isMain = true;
 
 const Header = (props) => {
     return (

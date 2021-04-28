@@ -47,3 +47,14 @@
 .links__link:first-child {
     margin: 0;
 }
+
+@media (max-width: 1024px) {
+    .portfolio {
+        margin: 90px 0 0;
+    }
+
+    .links__link {
+        font-size: 28px;
+        line-height: 50px;
+    }
+}

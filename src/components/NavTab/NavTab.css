@@ -20,3 +20,11 @@
 .navtab__link:last-child {
     margin: 0;
 }
+
+@media (max-width: 748px) {
+    .navtab__link {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 0 24px 0 0;
+    }
+}
