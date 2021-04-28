@@ -5,15 +5,17 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
 
 function App() {
   return (
     <div className="page__content">
-      <Header />
+      {/* <Header /> */}
       {/* <Movies /> */}
       {/* <Main /> */}
-      <Profile />
+      {/* <Profile /> */}
       {/* <Footer /> */}
+      <Register />
     </div>
   );
 }

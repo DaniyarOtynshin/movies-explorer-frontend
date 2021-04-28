@@ -1,7 +1,7 @@
 const Profile = (props) => {
     return (
         <div className="profile">
-            <h2 className="profile__welcome">Привет, Виталий!</h2>
+            <h2 className="profile__welcome welcome">Привет, Виталий!</h2>
             <form className="profile__form">
                 <input type="text" value="Виталий" className="profile__input"/>
                 <span className="profile__input-title">Имя</span>
