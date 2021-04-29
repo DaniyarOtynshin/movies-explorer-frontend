@@ -50,3 +50,18 @@
 .filter-check-box__checkbox:hover {
     cursor: pointer;
 }
+
+@media (max-width: 748px) {
+    .filter-check-box {
+        margin: 43px auto 0;
+    }
+
+    .filter-check-box__checkbox {
+        margin: 0 13px 0 0;
+    }
+
+    .filter-check-box__text {
+        font-size: 11px;
+        line-height: 18px;
+    }
+}
