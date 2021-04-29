@@ -1,11 +1,10 @@
 .techs {
     font-family: 'Inter', sans-serif;
     background-color: #272727;
-    min-height: 625px;
+    padding: 100px 0;
 }
 
 .techs__title {
-    padding: 100px 0 23px 0;
     margin: 0;
 }
 
@@ -28,7 +27,7 @@
 }
 
 .techs__items {
-    max-width: 690px;
+    max-width: fit-content;
     margin: 100px auto 0;
     display: flex;
 }
@@ -48,4 +47,37 @@
 
 .items__item:last-child {
     margin: 0;
+}
+
+@media (max-width: 1100px) {
+
+    .techs {
+        padding: 90px 0;
+    }
+
+    .techs__subtitle {
+        margin: 80px auto 0;
+    }
+
+    .techs__description {
+        margin: 22px auto 0;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .techs__items {
+        margin: 104px auto 0;
+    }
+
+    .items__item {
+        width: 84px;
+        height: 57px;
+        font-size: 12px;
+        line-height: 15px;
+        margin: 0 10px 0 0;
+    }
+}
+
+@media (max-width: 748px) {
+
 }
