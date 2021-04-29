@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="page__content">
       <Header />
-      <Main />
-      {/* <Movies /> */}
+      {/* <Main /> */}
+      <Movies />
       {/* <Profile /> */}
       <Footer />
       {/* <Register /> */}

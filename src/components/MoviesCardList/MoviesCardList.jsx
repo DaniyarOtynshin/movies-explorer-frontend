@@ -15,9 +15,9 @@ const MoviesCardList = (props) => {
             <MoviesCard />
             <MoviesCard />
             <MoviesCard />
-        <div className="movies-card-list__more more">
-            <button className="more__button">ещё</button>
-        </div>
+            <div className="movies-card-list__more more">
+                <button className="more__button">ещё</button>
+            </div>
         </div>
     )
 };

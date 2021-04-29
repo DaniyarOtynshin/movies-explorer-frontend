@@ -77,4 +77,10 @@
         font-size: 18px;
         line-height: 28px;
     }
+
+    .links__link::after {
+        width: 18px;
+        height: 18px;
+        padding: 0 0 26px;
+    }
 }
