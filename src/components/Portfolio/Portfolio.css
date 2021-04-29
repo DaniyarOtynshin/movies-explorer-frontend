@@ -1,5 +1,5 @@
 .portfolio {
-    margin: 100px 0 0 0;
+    margin: 100px 0 0;
     font-family: 'Inter', sans-serif;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .portfolio__links {
-    margin: 50px 0 0 0;
+    margin: 50px 0 0;
 }
 
 .links {
@@ -56,5 +56,25 @@
     .links__link {
         font-size: 28px;
         line-height: 50px;
+    }
+}
+
+@media (max-width: 748px) {
+    .portfolio {
+        margin: 70px 0 0;
+    }
+
+    .portfolio__title {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .portfolio__links {
+        margin: 40px 0 0;
+    }
+
+    .links__link {
+        font-size: 18px;
+        line-height: 28px;
     }
 }
