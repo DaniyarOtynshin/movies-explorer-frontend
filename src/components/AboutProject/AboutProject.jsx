@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutProject = (props) => {
     return (
-        <div className="about-project page__section page__section_body">
+        <section className="about-project page__section page__section_body">
             <h2 className="about-project__title title">
                 О проекте
             </h2>
@@ -20,7 +20,7 @@ const AboutProject = (props) => {
                 <div className="time-line__backend">1 неделя</div>
                 <div className="time-line__frontend">4 недели</div>
             </div>
-        </div>
+        </section>
     )
 };
 
