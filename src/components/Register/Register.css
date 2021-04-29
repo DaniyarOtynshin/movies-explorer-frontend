@@ -105,7 +105,15 @@
     .register__button {
         margin: 240px 0 0;
     }
+
+    .button {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
     .register__question {
         margin: 16px 0 30px;
+        font-size: 12px;
+        line-height: 14px;
     }
 }

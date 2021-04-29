@@ -1,6 +1,6 @@
 .login {
     font-family: 'Inter', sans-serif;
-    max-width: fit-content;
+    max-width: 396px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
 }
 
 .login__button {
-    margin: 179px 0 0;
+    margin: 350px 0 0;
 }
 
 .login__question {
@@ -46,4 +46,19 @@
 
 .login__login-link:hover {
     opacity: 0.8;
+}
+
+@media (max-width: 475px) {
+    .login {
+        max-width: 260px;
+        align-items: center;
+    }
+    .login__button {
+        margin: 240px 0 0;
+    }
+    .login__question {
+        margin: 16px 0 30px;
+        font-size: 12px;
+        line-height: 14px;
+    }
 }

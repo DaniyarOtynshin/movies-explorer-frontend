@@ -16,8 +16,8 @@ function App() {
       {/* <Movies /> */}
       {/* <Profile /> */}
      {/*  <Footer /> */}
-      <Register />
-      {/* <Login /> */}
+      {/* <Register /> */}
+      <Login />
     </div>
   );
 }
