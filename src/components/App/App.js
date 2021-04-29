@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
+import NotFoundError from '../NotFoundError/NotFoundError';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 
@@ -17,7 +18,8 @@ function App() {
       {/* <Profile /> */}
      {/*  <Footer /> */}
       {/* <Register /> */}
-      <Login />
+     {/*  <Login /> */}
+     <NotFoundError />
     </div>
   );
 }
