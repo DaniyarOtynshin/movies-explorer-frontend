@@ -11,12 +11,12 @@ import Register from '../Register/Register';
 function App() {
   return (
     <div className="page__content">
-      <Header />
+      {/* <Header /> */}
       {/* <Main /> */}
-      <Movies />
+      {/* <Movies /> */}
       {/* <Profile /> */}
-      <Footer />
-      {/* <Register /> */}
+     {/*  <Footer /> */}
+      <Register />
       {/* <Login /> */}
     </div>
   );
