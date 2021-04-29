@@ -14,7 +14,7 @@
     font-weight: 400;
     font-size: 50px;
     line-height: 58px;
-    max-width: 600px;
+    max-width: fit-content;
 }
 
 .techs__description {
@@ -79,5 +79,32 @@
 }
 
 @media (max-width: 748px) {
+    .techs {
+        padding: 70px 0;
+    }
 
+    .techs__subtitle {
+        margin: 60px auto 0;
+        font-size: 30px;
+        line-height: 36px;
+        max-width: 600px;
+    }
+
+    .techs__description {
+        margin: 24px auto 0;
+        font-size: 11px;
+        line-height: 16px;
+        max-width: fit-content;
+    }
+
+    .techs__items {
+        margin: 50px auto 0;
+        flex-wrap: wrap;
+        gap: 10px;
+        max-width: 178px;
+    }
+
+    .items__item {
+        margin: 0;
+    }
 }
