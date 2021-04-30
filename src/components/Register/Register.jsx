@@ -3,7 +3,7 @@ import logoPath from '../../images/logo.svg';
 const Register = (props) => {
     return (
         <div className="page__content register">
-            <a href="#"><img src={ logoPath } alt="Логотип" className="register__logo logo"/></a>
+            <a href="/"><img src={ logoPath } alt="Логотип" className="register__logo logo"/></a>
             <h2 className="register__welcome welcome">Добро пожаловать!</h2>
             <form className="register__form form">
                 <span className="register__input-title input-title">Имя</span>
@@ -14,7 +14,7 @@ const Register = (props) => {
                 <input type="password" className="register__input form-input"/>
                 <button className="register__button button">Зарегистрироваться</button>
             </form>
-            <p className="register__question">Уже зарегистрированы? <a className="register__login-link" href="#">Войти</a></p>
+            <p className="register__question">Уже зарегистрированы? <a className="register__login-link" href="/signin">Войти</a></p>
         </div>
     )
 };

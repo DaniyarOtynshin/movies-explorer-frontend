@@ -5,7 +5,7 @@ const NotFoundError = () => {
                 <h1 className="not-found-error__code">404</h1>
                 <p className="not-found-error__text">Страница не найдена</p>
             </div>
-            <a href="#" className="not-found-error__link">назад</a>
+            <a href="/" className="not-found-error__link">назад</a>
         </div>
     )
 };

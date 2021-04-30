@@ -15,8 +15,8 @@ const AboutMe = (props) => {
                     <h4 className="my-info__title">Фронтенд-разработчик, 30 лет</h4>
                     <p className="my-info__paragraph">Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
                     <p className="my-info__contacts contacts">
-                        <a href="#" className="contacts__link">Facebook</a>
-                        <a href="#" className="contacts__link">Github</a>
+                        <a href="https://www.facebook.com/" className="contacts__link">Facebook</a>
+                        <a href="https://github.com/" className="contacts__link">Github</a>
                     </p>
                 </div>
                 <img src={ photoPath } alt="Моё фото" className="my-info__photo"/>

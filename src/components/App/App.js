@@ -1,6 +1,7 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
+import { Route } from 'react-router-dom';
 
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
@@ -13,12 +14,22 @@ function App() {
   return (
     <div className="page__content">
       <Header />
-      {/* <Main /> */}
-      <Movies />
-      {/* <Profile /> */}
+      <Route exact path="/">
+        <Main />
+      </Route>
+      <Route path="/movies">
+        <Movies />
+      </Route>
+      <Route path="/profile">
+        <Profile />
+      </Route>
+      <Route path="/signup">
+        <Register />
+      </Route>
+      <Route path="/signin">
+        <Login />
+      </Route>
       <Footer />
-      {/* <Register /> */}
-     {/*  <Login /> */}
      {/* <NotFoundError /> */}
     </div>
   );

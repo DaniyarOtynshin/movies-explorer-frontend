@@ -24,7 +24,7 @@ const Header = (props) => {
     return (
         <header className={ `page__content ${isMain ? "page__content_green" : "page__content_black"}` }>
             <div className="header page__section">
-                <a href="#"><img src={ logoPath } alt="logo" className="header__logo logo"/></a>
+                <a href="/"><img src={ logoPath } alt="logo" className="header__logo logo"/></a>
                 <div className="header__menu menu">
                     <div onClick={handleMenuButton} class={ `menu__icon${isActive ? " menu__icon_active" : ""}` }>
                         <span></span>
@@ -34,8 +34,8 @@ const Header = (props) => {
                         {
                             isMain
                             ? <>
-                                <li><a href="#" className="menu__link">Регистрация</a></li>
-                                <li><a href="#" className="menu__link"><button className="menu__button">Войти</button></a></li>
+                                <li><a href="/signup" className="menu__link">Регистрация</a></li>
+                                <li><a href="/signin" className="menu__link"><button className="menu__button">Войти</button></a></li>
                             </>
                             : <>
                                 {
@@ -43,11 +43,11 @@ const Header = (props) => {
                                     ? <li className="menu__item"><a href="#" className="menu__link">Главная</a></li>
                                     : <></>
                                 }
-                                <li className="menu__item"><a href="#" className="menu__link menu__link_active">Фильмы</a></li>
-                                <li className="menu__item"><a href="#" className="menu__link">Сохранённые фильмы</a></li>
+                                <li className="menu__item"><a href="/movies" className="menu__link menu__link_active">Фильмы</a></li>
+                                <li className="menu__item"><a href="/saved-movies" className="menu__link">Сохранённые фильмы</a></li>
                                 <div className="menu__profile-account">
-                                    <a href="#" className="menu__link menu__profile-text">Аккаунт</a>
-                                    <a href="#" className="menu__link menu__link_profile"><span className="menu__profile"/></a>
+                                    <a href="/profile" className="menu__link menu__profile-text">Аккаунт</a>
+                                    <a href="/profile" className="menu__link menu__link_profile"><span className="menu__profile"/></a>
                                 </div>
                             </>
                         }
