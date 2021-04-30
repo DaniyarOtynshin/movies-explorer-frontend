@@ -42,30 +42,25 @@
     margin: 0;
 }
 
+.menu__item {
+    padding: 0 20px 0 0;
+}
+
+.menu__item:last-of-type {
+    padding: 0;
+}
+
 .menu__link {
     font-size: 14px;
     line-height: 16px;
-    font-weight: 500;
-    padding: 0 0 0 30px;
+    font-weight: 400;
+    padding: 0;
     text-decoration: none;
     color: #fff;
 }
 
 .menu__link:hover {
     opacity: 0.8;
-}
-
-.menu__link_movies {
-    margin: 0;
-}
-
-.menu__link_saved-films {
-    padding: 0 0 0 20px;
-    font-weight: 400;
-}
-
-.menu__link_profile {
-    margin: 0;
 }
 
 .menu__profile-text {
@@ -75,6 +70,7 @@
 .menu__profile-account {
     display: flex;
     align-items: center;
+    text-decoration: none;
     margin: 0 0 0 50px
 }
 
@@ -195,6 +191,7 @@
         left: 0;
         background: #000;
         opacity: 0.3;
+        z-index: 1;
     }
 
     .menu__body_active + .menu__body_background {
