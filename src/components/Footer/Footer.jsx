@@ -5,9 +5,9 @@ const Footer = (props) => {
             <div className="footer__bottom">
                 <p className="footer__copyright">&copy; 2021</p>
                 <div className="footer__links">
-                    <a href="https://praktikum.yandex.ru/" className="footer__link">Яндекс.Практикум</a>
-                    <a href="https://github.com/" className="footer__link">Github</a>
-                    <a href="https://www.facebook.com/" className="footer__link">Facebook</a>
+                    <a href="https://praktikum.yandex.ru/" target="blank" className="footer__link">Яндекс.Практикум</a>
+                    <a href="https://github.com/" target="blank" className="footer__link">Github</a>
+                    <a href="https://www.facebook.com/" target="blank" className="footer__link">Facebook</a>
                 </div>
             </div>
         </footer>

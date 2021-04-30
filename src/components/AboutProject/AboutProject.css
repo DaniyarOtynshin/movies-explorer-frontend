@@ -1,5 +1,6 @@
 .about-project {
     font-family: 'Inter', sans-serif;
+    width: 100%;
 }
 
 .about-project__title {
@@ -166,11 +167,11 @@
     }
 
     .time-line__backend {
-        flex: 1 0 100px;
+        flex: 1 1 100px;
     }
     
     .time-line__frontend {
-        flex: 1 0 184px;
+        flex: 1 1 184px;
     }
 
     .time-line__frontend::after {

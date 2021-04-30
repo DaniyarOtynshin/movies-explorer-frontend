@@ -1,8 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 .page__content {
     width: 100%;
     background-color: #202020;
     margin: 0 auto;
     color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .page__content_green {
