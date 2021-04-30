@@ -5,7 +5,7 @@ import Portfolio from '../Portfolio/Portfolio';
 
 const AboutMe = (props) => {
     return (
-        <div className="about-me page__section page__section_body">
+        <section className="about-me page__section page__section_body">
             <h2 className="about-me__title title">
                 Студент
             </h2>
@@ -22,7 +22,7 @@ const AboutMe = (props) => {
                 <img src={ photoPath } alt="Моё фото" className="my-info__photo"/>
             </div>
             <Portfolio />
-        </div>
+        </section>
     )
 };
 

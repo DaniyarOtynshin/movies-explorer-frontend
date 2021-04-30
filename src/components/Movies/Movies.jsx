@@ -14,14 +14,14 @@ const Movies = (props) => {
     }
 
     return (
-        <div className="movies">
+        <section className="movies">
             <SearchForm onClick={onClick}/>
             {
                 isLoading
                 ? <Preloader />
                 : <MoviesCardList isSaved={props.isSaved}/>
             }
-        </div>
+        </section>
     )
 };
 

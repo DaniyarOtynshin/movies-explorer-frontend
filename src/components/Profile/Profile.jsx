@@ -1,6 +1,6 @@
 const Profile = (props) => {
     return (
-        <div className="profile">
+        <section className="profile">
             <h2 className="profile__welcome welcome">Привет, Виталий!</h2>
             <form className="profile__form">
                 <input type="text" value="Виталий" className="profile__input"/>
@@ -10,7 +10,7 @@ const Profile = (props) => {
                 <button className="profile__button">Редактировать</button>
             </form>
             <button className="profile__exit-button">Выйти из аккаунта</button>
-        </div>
+        </section>
     )
 };
 

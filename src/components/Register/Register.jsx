@@ -2,7 +2,7 @@ import logoPath from '../../images/logo.svg';
 
 const Register = (props) => {
     return (
-        <div className="register">
+        <section className="register">
             <a href="/"><img src={ logoPath } alt="Логотип" className="register__logo logo"/></a>
             <h2 className="register__welcome welcome">Добро пожаловать!</h2>
             <form className="register__form form">
@@ -16,7 +16,7 @@ const Register = (props) => {
                 <button className="register__button button">Зарегистрироваться</button>
             </form>
             <p className="register__question">Уже зарегистрированы? <a className="register__login-link" href="/signin">Войти</a></p>
-        </div>
+        </section>
     )
 };
 
