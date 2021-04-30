@@ -13,11 +13,12 @@ import Register from '../Register/Register';
 function App() {
   return (
     <div className="page__content">
-      <Header />
       <Route exact path="/">
+        <Header isMain={true}/>
         <Main />
       </Route>
       <Route path="/movies">
+        <Header isMain={false}/>
         <Movies />
       </Route>
       <Route path="/profile">

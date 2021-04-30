@@ -25,7 +25,7 @@
 }
 
 .login__button {
-    margin: 350px 0 0;
+    margin: 220px 0 0;
 }
 
 .login__question {
@@ -52,9 +52,6 @@
     .login {
         max-width: 260px;
         align-items: center;
-    }
-    .login__button {
-        margin: 240px 0 0;
     }
     .login__question {
         margin: 16px 0 30px;

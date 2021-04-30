@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import logoPath from '../../images/logo.svg';
 
-const isMain = false;
-
 const Header = (props) => {
     const [isActive, setIsActive] = useState(false);
 
@@ -22,7 +20,7 @@ const Header = (props) => {
     }
 
     return (
-        <header className={ `page__content ${isMain ? "page__content_green" : "page__content_black"}` }>
+        <header className={ `page__content ${props.isMain ? "page__content_green" : "page__content_black"}` }>
             <div className="header page__section">
                 <a href="/"><img src={ logoPath } alt="logo" className="header__logo logo"/></a>
                 <div className="header__menu menu">
@@ -32,7 +30,7 @@ const Header = (props) => {
                     <div className={ `menu__body${isActive ? " menu__body_active" : ""}` }>
                         <ul className="menu__list">
                         {
-                            isMain
+                            props.isMain
                             ? <>
                                 <li><a href="/signup" className="menu__link">Регистрация</a></li>
                                 <li><a href="/signin" className="menu__link"><button className="menu__button">Войти</button></a></li>
@@ -40,7 +38,7 @@ const Header = (props) => {
                             : <>
                                 {
                                     isActive
-                                    ? <li className="menu__item"><a href="#" className="menu__link">Главная</a></li>
+                                    ? <li className="menu__item"><a href="/" className="menu__link">Главная</a></li>
                                     : <></>
                                 }
                                 <li className="menu__item"><a href="/movies" className="menu__link menu__link_active">Фильмы</a></li>
