@@ -12,14 +12,14 @@ import Register from '../Register/Register';
 function App() {
   return (
     <div className="page__content">
-      {/* <Header /> */}
+      <Header />
       {/* <Main /> */}
-      {/* <Movies /> */}
+      <Movies />
       {/* <Profile /> */}
-     {/*  <Footer /> */}
+      <Footer />
       {/* <Register /> */}
      {/*  <Login /> */}
-     <NotFoundError />
+     {/* <NotFoundError /> */}
     </div>
   );
 }
