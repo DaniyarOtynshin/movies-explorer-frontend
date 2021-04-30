@@ -66,6 +66,10 @@
     margin: 0;
 }
 
+.contacts__link:hover {
+    opacity: 0.8;
+}
+
 @media (max-width: 1024px) {
 
     .about-me__title {

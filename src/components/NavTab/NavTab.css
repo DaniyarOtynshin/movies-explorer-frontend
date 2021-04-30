@@ -21,6 +21,11 @@
     margin: 0;
 }
 
+.navtab__link:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 @media (max-width: 748px) {
     .navtab__link {
         font-size: 11px;

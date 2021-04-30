@@ -2,8 +2,6 @@ import imagePath from '../../images/movie1.jpg';
 
 import crossPath from '../../images/cross.svg';
 
-const isSaved = false;
-
 const MoviesCard = (props) => {
     return (
         <div className="movies-card">
@@ -11,7 +9,7 @@ const MoviesCard = (props) => {
             <div className="movies-card__card-info card-info">
                 <p className="card-info__title">33 слова о дизайне</p>
                 {
-                    isSaved
+                    props.isSaved
                     ? <img src={ crossPath } alt="удалить" className="card-info__remove"/>
                     : (
                         <label className="card-info__label">

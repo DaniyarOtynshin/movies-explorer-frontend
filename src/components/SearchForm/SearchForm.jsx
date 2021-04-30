@@ -6,7 +6,7 @@ const SearchForm = (props) => {
         <form className="search-form page__section">
             <input type="text" placeholder="фильм" className="search-form__input"/>
             <img src={ findPath } alt="Поиск" className="search-form__find"/>
-            <button className="search-form__button">Найти</button>
+            <button onClick={props.onClick} className="search-form__button">Найти</button>
             <FilterCheckBox />
         </form>
     )

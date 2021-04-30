@@ -83,4 +83,8 @@
         height: 18px;
         padding: 0 0 26px;
     }
+
+    .links__link:hover {
+        opacity: 0.8;
+    }
 }

@@ -39,10 +39,15 @@
     border-bottom: 1px solid #424242;
     padding: 0 0 10px;
     margin: 5px 0 0;
+    transition: 0.3s;
 }
 
 .form-input[type="password"] {
     color: #EE3465;
+}
+
+.form-input:focus {
+    border-bottom: 1px solid #4285F4;
 }
 
 .form-input__error {

@@ -19,7 +19,11 @@ function App() {
       </Route>
       <Route path="/movies">
         <Header isMain={false}/>
-        <Movies />
+        <Movies isSaved={false}/>
+      </Route>
+      <Route path="/saved-movies">
+        <Header isMain={false}/>
+        <Movies isSaved={true}/>
       </Route>
       <Route path="/profile">
         <Profile />
