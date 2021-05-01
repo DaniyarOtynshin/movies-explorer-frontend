@@ -33,7 +33,7 @@ const Header = (props) => {
                             props.isMain
                             ? <>
                                 <li className="menu__item"><a href="/signup" className="menu__link">Регистрация</a></li>
-                                <li className="menu__item"><a href="/signin" className="menu__link"><button className="menu__button">Войти</button></a></li>
+                                <li className="menu__item"><a href="/signin" className="menu__link menu__link_button">Войти</a></li>
                             </>
                             : <>
                                 {
