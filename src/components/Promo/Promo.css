@@ -1,0 +1,49 @@
+.promo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter';
+    height: 524px;
+    background-color: #073042;
+    position: relative;
+}
+
+.promo__title {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    max-width: 736px;
+    text-align: center;
+}
+
+.promo__logo {
+    width: 320px;
+    height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1024px) {
+    .promo {
+        height: 784px;
+    }
+}
+
+@media (max-width: 748px) {
+    .promo {
+        height: 570px;
+    }
+
+    .promo__title {
+        font-size: 31px;
+        line-height: 39px;
+        max-width: 300px;
+    }
+    
+    .promo__logo {
+        width: 248px;
+        height: 248px;
+    }
+}

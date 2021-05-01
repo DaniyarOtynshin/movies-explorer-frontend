@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+.page__content {
+    width: 100%;
+    background-color: #202020;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.page__content_green {
+    background-color: #073042;
+}
+
+.page__content_grey {
+    background-color: #272727;
+}
+
+.page__content_black {
+    background-color: #202020;
+}
+
+.page__section {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.page__section_body {
+    padding: 0 50px;
+}
+
+@media (max-width: 748px) {
+
+    .page__section {
+        padding: 0 14px;
+    }
+
+    .page__section_body {
+        padding: 0 14px;
+    }
+}

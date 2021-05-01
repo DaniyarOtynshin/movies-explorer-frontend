@@ -1,0 +1,166 @@
+.about-me {
+    font-family: 'Inter', sans-serif;
+    min-height: 1079px;
+}
+
+.about-me__title {
+    margin: 110px 0 0;
+}
+
+.about-me__my-info {
+    margin: 66px 0 0;
+}
+
+.my-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-info__description {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.my-info__name {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    margin: 0;
+}
+
+.my-info__title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 18px 0 0 0;
+}
+
+.my-info__paragraph {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 26px 0 0 0;
+}
+
+.my-info__photo {
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+}
+
+.contacts {
+    margin: 99px 0 0 0;
+}
+
+.contacts__link {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px 0 0;
+}
+
+.contacts__link:last-child {
+    margin: 0;
+}
+
+.contacts__link:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+
+    .about-me__title {
+        margin: 90px 0 0;
+    }
+
+    .my-info__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .my-info__title {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 16px 0 0 0;
+    }
+
+    .my-info__paragraph {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 18px;
+        margin: 20px 0 0 0;
+    }
+
+    .my-info__description {
+        max-width: 364px;
+    }
+
+    .contacts {
+        margin: 87px 0 0 0;
+    }
+
+    .my-info__photo {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+@media (max-width: 748px) {
+
+    .about-me__title {
+        margin: 70px 0 0;
+    }
+
+    .about-me__my-info {
+        margin: 60px 0 0;
+    }
+
+    .my-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .my-info__photo {
+        order: 0;
+    }
+
+    .my-info__description {
+        margin: 40px 0 0;
+        order: 1;
+    }
+
+    .my-info__photo {
+        width: 292px;
+        height: 352px;
+    }
+
+    .my-info__name {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .my-info__title {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px 0 0 0;
+    }
+
+    .my-info__paragraph {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px 0 0 0;
+    }
+
+    .my-info__description {
+        max-width: 100%;
+    }
+
+    .contacts {
+        margin: 40px 0 0 0;
+    }
+
+}
