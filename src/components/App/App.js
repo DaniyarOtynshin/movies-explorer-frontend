@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -19,30 +20,32 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
-                <Route exact path="/">
-                    <Header isMain={true} loggedIn={loggedIn}/>
-                    <Main />
-                </Route>
-                <Route path="/movies">
-                    <Header isMain={false}/>
-                    <Movies isSaved={false}/>
-                </Route>
-                <Route path="/saved-movies">
-                    <Header isMain={false}/>
-                    <Movies isSaved={true}/>
-                </Route>
-                <Route path="/profile">
-                    <Profile />
-                </Route>
-                <Route path="/signup">
-                    <Register />
-                </Route>
-                <Route path="/signin">
-                    <Login />
-                </Route>
-                <Route path="/not-found-error">
-                    <NotFoundError />
-                </Route>
+                <Switch>
+                    <ProtectedRoute exact path="/" loggedIn={loggedIn}>
+                        <Header isMain={true} loggedIn={loggedIn}/>
+                        <Main />
+                    </ProtectedRoute>
+                    <ProtectedRoute loggedIn={loggedIn} path="/movies">
+                        <Header isMain={false}/>
+                        <Movies isSaved={false}/>
+                    </ProtectedRoute>
+                    <ProtectedRoute path="/saved-movies" loggedIn={loggedIn}>
+                        <Header isMain={false}/>
+                        <Movies isSaved={true}/>
+                    </ProtectedRoute>
+                    <ProtectedRoute path="/profile" loggedIn={loggedIn}>
+                        <Profile />
+                    </ProtectedRoute>
+                    <Route path="/signup">
+                        <Register />
+                    </Route>
+                    <Route path="/signin">
+                        <Login />
+                    </Route>
+                    <Route path="/not-found-error">
+                        <NotFoundError />
+                    </Route>
+                </Switch>
                 <Footer />
             </div>
         </CurrentUserContext.Provider>
