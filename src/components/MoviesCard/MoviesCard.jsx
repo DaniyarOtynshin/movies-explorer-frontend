@@ -1,15 +1,19 @@
-import imagePath from '../../images/movie1.jpg';
-
 import crossPath from '../../images/cross.svg';
 
-const MoviesCard = (props) => {
+const handleDuration = (duration) => {
+    const hours = Math.floor(duration / 60);
+    const minutes = duration % 60;
+    return `${hours}ч${minutes}м`;
+}
+
+const MoviesCard = ({ name, image, duration, isSaved }) => {
     return (
         <div className="movies-card">
-            <img src={ imagePath } alt="Обложка" className="movies-card__image"/>
+            <img src={ image } alt="Обложка" className="movies-card__image"/>
             <div className="movies-card__card-info card-info">
-                <p className="card-info__title">33 слова о дизайне</p>
+                <p className="card-info__title">{ name }</p>
                 {
-                    props.isSaved
+                    isSaved
                     ? <img src={ crossPath } alt="удалить" className="card-info__remove"/>
                     : (
                         <label className="card-info__label">
@@ -20,7 +24,7 @@ const MoviesCard = (props) => {
                 }
 
             </div>
-            <p className="card-info__time">11:34</p>
+            <p className="card-info__time">{ handleDuration(duration) }</p>
         </div>
     )
 };

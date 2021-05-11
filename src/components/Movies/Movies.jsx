@@ -1,19 +1,26 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import SearchForm from "../SearchForm/SearchForm"
 import Preloader from "../Preloader/Preloader"
-import React, { useState } from "react";
-
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import React, { useEffect, useState } from "react";
+import moviesApi from '../../utils/MoviesApi';
 
 const Movies = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
-    const currentUser = React.useContext(CurrentUserContext);
+    const [movies, setMovies] = useState([]);
 
     const onClick = (e) => {
         e.preventDefault();
         setIsLoading(true);
     }
+
+    useEffect(() => {
+        moviesApi.getMovies()
+            .then(movies => {
+                setMovies(movies);
+            })
+            .catch(err => console.error(err))
+    })
 
     return (
         <section className="movies">
@@ -21,7 +28,7 @@ const Movies = (props) => {
             {
                 isLoading
                 ? <Preloader />
-                : <MoviesCardList isSaved={props.isSaved}/>
+                : <MoviesCardList isSaved={props.isSaved} movies={movies}/>
             }
         </section>
     )
