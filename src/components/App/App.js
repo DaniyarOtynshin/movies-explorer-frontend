@@ -32,7 +32,7 @@ function App() {
                     <Route path="/signin">
                         <Login />
                     </Route>
-                    <Route path="/not-found-error">
+                    <Route path="/*">
                         <NotFoundError />
                     </Route>
                 </Switch>
