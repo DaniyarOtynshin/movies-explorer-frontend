@@ -20,7 +20,7 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
                 <Route exact path="/">
-                    <Header isMain={true}/>
+                    <Header isMain={true} loggedIn={loggedIn}/>
                     <Main />
                 </Route>
                 <Route path="/movies">

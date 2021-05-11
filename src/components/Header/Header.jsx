@@ -30,12 +30,8 @@ const Header = (props) => {
                     <div className={ `menu__body${isActive ? " menu__body_active" : ""}` }>
                         <ul className="menu__list">
                         {
-                            props.isMain
+                            props.isLoggedIn
                             ? <>
-                                <li className="menu__item"><a href="/signup" className="menu__link">Регистрация</a></li>
-                                <li className="menu__item"><a href="/signin" className="menu__link menu__link_button">Войти</a></li>
-                            </>
-                            : <>
                                 {
                                     isActive
                                     ? <li className="menu__item"><a href="/" className="menu__link">Главная</a></li>
@@ -47,6 +43,10 @@ const Header = (props) => {
                                     <p className="menu__link menu__profile-text">Аккаунт</p>
                                     <span className="menu__profile"/>
                                 </a>
+                            </>
+                            : <>
+                                <li className="menu__item"><a href="/signup" className="menu__link">Регистрация</a></li>
+                                <li className="menu__item"><a href="/signin" className="menu__link menu__link_button">Войти</a></li>
                             </>
                         }
                         </ul>
