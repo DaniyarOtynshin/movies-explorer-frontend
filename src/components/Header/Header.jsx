@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+
 import logoPath from '../../images/logo.svg';
 
 const Header = (props) => {
+
+    const currentUser = React.useContext(CurrentUserContext);
+
     const [isActive, setIsActive] = useState(false);
 
     const handleMenuButton = () => {

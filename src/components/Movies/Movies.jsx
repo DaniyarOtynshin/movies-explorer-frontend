@@ -1,12 +1,14 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import SearchForm from "../SearchForm/SearchForm"
 import Preloader from "../Preloader/Preloader"
-import { useState } from "react";
+import React, { useState } from "react";
 
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 const Movies = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
+    const currentUser = React.useContext(CurrentUserContext);
 
     const onClick = (e) => {
         e.preventDefault();

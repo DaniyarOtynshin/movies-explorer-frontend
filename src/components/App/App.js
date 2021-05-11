@@ -14,28 +14,18 @@ import Register from '../Register/Register';
 
 function App() {
 
-    const [currentUser, setCurrentUser] = useState({});
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [currentUser, setCurrentUser] = useState();
+    const [loggedIn, setLoggedIn] = useState(true);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
+            <Header isMain={true} loggedIn={loggedIn}/>
                 <Switch>
-                    <ProtectedRoute exact path="/" loggedIn={loggedIn}>
-                        <Header isMain={true} loggedIn={loggedIn}/>
-                        <Main />
-                    </ProtectedRoute>
-                    <ProtectedRoute loggedIn={loggedIn} path="/movies">
-                        <Header isMain={false}/>
-                        <Movies isSaved={false}/>
-                    </ProtectedRoute>
-                    <ProtectedRoute path="/saved-movies" loggedIn={loggedIn}>
-                        <Header isMain={false}/>
-                        <Movies isSaved={true}/>
-                    </ProtectedRoute>
-                    <ProtectedRoute path="/profile" loggedIn={loggedIn}>
-                        <Profile />
-                    </ProtectedRoute>
+                    <ProtectedRoute exact path="/" loggedIn={loggedIn} component={Main} />
+                    <ProtectedRoute loggedIn={loggedIn} path="/movies" component={Movies} />
+                    <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />
+                    <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} />
                     <Route path="/signup">
                         <Register />
                     </Route>

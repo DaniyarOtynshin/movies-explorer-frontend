@@ -1,6 +1,11 @@
 import React from 'react';
 
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+
 const Portfolio = (props) => {
+
+    const currentUser = React.useContext(CurrentUserContext);
+    
     return (
         <section className="portfolio">
             <h3 className="portfolio__title">Портфолио</h3>
