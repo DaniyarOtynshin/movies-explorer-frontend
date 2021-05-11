@@ -23,18 +23,12 @@ function App() {
             <Header isMain={true} loggedIn={loggedIn}/>
                 <Switch>
                     <ProtectedRoute exact path="/" loggedIn={loggedIn} component={Main} />
-                    <ProtectedRoute loggedIn={loggedIn} path="/movies" component={Movies} />
+                    <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} />
                     <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />
                     <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} />
-                    <Route path="/signup">
-                        <Register />
-                    </Route>
-                    <Route path="/signin">
-                        <Login />
-                    </Route>
-                    <Route path="/*">
-                        <NotFoundError />
-                    </Route>
+                    <Route path="/signup" component={Register}/>
+                    <Route path="/signin" component={Login} />
+                    <Route path="/*" component={NotFoundError} />
                 </Switch>
                 <Footer />
             </div>
