@@ -1,15 +1,17 @@
 import crossPath from '../../images/cross.svg';
 
-const handleDuration = (duration) => {
+const convertDuration = (duration) => {
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
     return `${hours}ч${minutes}м`;
 }
 
+const URL = 'https://api.nomoreparties.co';
+
 const MoviesCard = ({ name, image, duration, isSaved }) => {
     return (
         <div className="movies-card">
-            <img src={ image } alt="Обложка" className="movies-card__image"/>
+            <img src={ URL + image } alt="Обложка" className="movies-card__image"/>
             <div className="movies-card__card-info card-info">
                 <p className="card-info__title">{ name }</p>
                 {
@@ -24,7 +26,7 @@ const MoviesCard = ({ name, image, duration, isSaved }) => {
                 }
 
             </div>
-            <p className="card-info__time">{ handleDuration(duration) }</p>
+            <p className="card-info__time">{ convertDuration(duration) }</p>
         </div>
     )
 };

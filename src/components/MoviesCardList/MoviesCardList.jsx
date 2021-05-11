@@ -18,14 +18,6 @@ const MoviesCardList = (props) => {
                     )
                 })
             }
-            <MoviesCard isSaved={props.isSaved}/>
-            <MoviesCard isSaved={props.isSaved}/>
-            <MoviesCard isSaved={props.isSaved}/>
-            <MoviesCard isSaved={props.isSaved}/>
-            <MoviesCard isSaved={props.isSaved}/>
-            <MoviesCard isSaved={props.isSaved}/>
-            <MoviesCard isSaved={props.isSaved}/>
-            <MoviesCard isSaved={props.isSaved}/>
             <div className="movies-card-list__more more">
                 <button className="more__button">ещё</button>
             </div>

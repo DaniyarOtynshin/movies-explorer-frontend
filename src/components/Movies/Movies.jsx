@@ -6,7 +6,7 @@ import moviesApi from '../../utils/MoviesApi';
 
 const Movies = (props) => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [movies, setMovies] = useState([]);
 
     const onClick = (e) => {
@@ -20,6 +20,7 @@ const Movies = (props) => {
                 setMovies(movies);
             })
             .catch(err => console.error(err))
+            .finally(() => setIsLoading(false))
     })
 
     return (
