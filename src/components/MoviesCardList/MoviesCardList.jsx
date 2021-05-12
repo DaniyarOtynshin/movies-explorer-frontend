@@ -9,8 +9,10 @@ const MoviesCardList = (props) => {
                 props.movies.map((movieData) => {
                     return (
                         <MoviesCard
+                            handlecheck={props.handlecheck}
                             key={movieData.id}
                             isSaved={props.isSaved}
+                            isChecked={props.isChecked}
                             name={movieData.nameRU}
                             image={movieData.image?.url}
                             duration={movieData.duration}

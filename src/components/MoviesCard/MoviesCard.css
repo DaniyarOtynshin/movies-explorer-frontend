@@ -62,9 +62,13 @@
     transition: 0.3s;
 }
 
-.card-info__button:checked + .card-info__checkbox::before {
+.card-info__label._checked .card-info__checkbox::before {
     background-color: #2BE080;
 }
+
+/* .card-info__button:checked + .card-info__checkbox::before {
+    background-color: #2BE080;
+} */
 
 .card-info__remove {
     width: 16px;

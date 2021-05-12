@@ -10,13 +10,10 @@ class MainApi {
           return Promise.reject(`Что-то пошло не так: ${res.status}`);
       };
 
-    getAllMovies(token) {
+    getAllMovies() {
         return fetch(`${this._url}movies`, {
             method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            }
-          })
+        })
         .then((res) => this._checkResponse(res))
     };
 

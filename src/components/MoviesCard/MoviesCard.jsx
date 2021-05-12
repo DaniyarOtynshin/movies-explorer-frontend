@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import crossPath from '../../images/cross.svg';
 
 const convertDuration = (duration) => {
@@ -8,7 +9,7 @@ const convertDuration = (duration) => {
 
 const URL = 'https://api.nomoreparties.co';
 
-const MoviesCard = ({ name, image, duration, isSaved }) => {
+const MoviesCard = ({ name, image, duration, isSaved, isChecked, handleCheck }) => {
     return (
         <div className="movies-card">
             <img src={ URL + image } alt="Обложка" className="movies-card__image"/>
@@ -18,13 +19,12 @@ const MoviesCard = ({ name, image, duration, isSaved }) => {
                     isSaved
                     ? <img src={ crossPath } alt="удалить" className="card-info__remove"/>
                     : (
-                        <label className="card-info__label">
-                            <input type="checkbox" className="card-info__button"/>
+                        <label className={isChecked ? "card-info__label _checked" : "card-info__label"}>
+                            <input type="checkbox" onClick={handleCheck} className="card-info__button"/>
                             <span className="card-info__checkbox"></span>
                         </label>
                     )
                 }
-
             </div>
             <p className="card-info__time">{ convertDuration(duration) }</p>
         </div>
