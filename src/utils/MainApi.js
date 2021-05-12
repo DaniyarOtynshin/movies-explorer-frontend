@@ -44,7 +44,7 @@ class MainApi {
         })
         .then(res => this._checkResponse(res))
         .then(data => data)
-      } 
+      }
 
     updateCurrentProfile({ email, name }) {
         return fetch(`${this._url}users/me`, {
@@ -61,6 +61,6 @@ class MainApi {
     };
 }
 
-const mainApi = new MainApi('/http://api.odt.students.nomoredomains.club/');
+const mainApi = new MainApi('http:/api.filmderdi-zerttewsi.nomoredomains.icu/');
 
 export default mainApi;

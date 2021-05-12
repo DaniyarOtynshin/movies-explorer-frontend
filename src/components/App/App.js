@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -12,10 +12,40 @@ import NotFoundError from '../NotFoundError/NotFoundError';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 
+import auth from '../../utils/Auth';
+
 function App() {
 
-    const [currentUser, setCurrentUser] = useState();
+    const [currentUser, setCurrentUser] = useState({});
     const [loggedIn, setLoggedIn] = useState(true);
+    const [isTokenCorrect, setIsTokenCorrect] = useState(false)
+
+
+   const history = useHistory();
+
+    const onLogin = (password, email) => {
+        auth.login(password, email)
+          .then(data => {
+            if (data.token) {
+              setLoggedIn(true);
+              localStorage.setItem('token', data.token);
+              setIsTokenCorrect(true);
+              history.push('/')
+            }
+          })
+          .catch(err => console.error(err))
+      }
+
+    const onRegister = (email, password, name) => {
+        auth.register(email, password, name)
+            .then(data => {
+                setCurrentUser({
+                    email: data.email,
+                    password: data.password,
+                    name: data.name
+                })
+            })
+    };
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -26,8 +56,8 @@ function App() {
                         <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} />
                         <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />
                         <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} />
-                        <Route path="/signup" component={Register}/>
-                        <Route path="/signin" component={Login} />
+                        <Route path="/signup" onRegister={onRegister} component={Register}/>
+                        <Route path="/signin" onLogin={onLogin} component={Login} />
                         <Route path="/*" component={NotFoundError} />
                     </Switch>
                 <Footer />
