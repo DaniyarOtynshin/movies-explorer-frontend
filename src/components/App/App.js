@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -46,6 +46,20 @@ function App() {
                 })
             })
     };
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            const token = localStorage.getItem('token');
+            auth.getContent(token).then((res) => {
+                if (res) {
+                setCurrentUser(res);
+                setLoggedIn(true);
+                history.push('/');
+                }
+            })
+            .catch(err => console.error(err))
+        }
+    }, [isTokenCorrect, history]);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
