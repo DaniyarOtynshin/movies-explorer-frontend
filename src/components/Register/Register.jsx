@@ -12,7 +12,7 @@ const Register = (props) => {
         if (!nameProps.value || !emailProps.value || !passwordProps.value) {
             return;
         }
-        props.onRegister(emailProps.value, passwordProps.value, nameProps.value);
+        props.onRegister(passwordProps.value, emailProps.value, nameProps.value);
         resetName()
         resetEmail()
         resetPassword()

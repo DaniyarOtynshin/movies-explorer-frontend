@@ -13,15 +13,20 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 
 import auth from '../../utils/Auth';
+import mainApi from '../../utils/MainApi';
+import { useInput } from '../../hooks/useInput';
+import moviesApi from '../../utils/MoviesApi';
 
 function App() {
-
     const [currentUser, setCurrentUser] = useState({});
     const [loggedIn, setLoggedIn] = useState(true);
     const [isTokenCorrect, setIsTokenCorrect] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [movies, setMovies] = useState([]);
 
+    const [searchProps, resetSearch] = useInput('');
 
-   const history = useHistory();
+    const history = useHistory();
 
     const onLogin = (password, email) => {
         auth.login(password, email)
@@ -41,9 +46,9 @@ function App() {
             .then(data => {
                 setCurrentUser({
                     email: data.email,
-                    password: data.password,
                     name: data.name
                 })
+                history.push('/signin');
             })
     };
 
@@ -51,21 +56,53 @@ function App() {
         localStorage.removeItem('token');
         setLoggedIn(false);
         history.push('/signin');
-      };
+    };
 
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            const token = localStorage.getItem('token');
-            auth.getContent(token).then((res) => {
-                if (res) {
-                setCurrentUser(res);
-                setLoggedIn(true);
-                history.push('/');
-                }
+    const handleMovie = (movie) => {
+        const isAdded = movie.owner === currentUser._id;
+        isAdded
+        ? handleMovieAdd(movie)
+        : handleMovieDelete(movie)
+    }
+
+    const handleMovieAdd = (movieBody) => {
+        mainApi.addMovie(movieBody)
+            .then((newMovie) => {
+                const newMovies = movies.map(
+                    (previousMovie) => previousMovie.movieId === newMovie.movieId ? newMovie : previousMovie
+                );
+                setMovies(newMovies);
+            })
+        .catch(err => console.error(err))
+      }
+    
+    const handleMovieDelete = (movie) => {
+        mainApi.deleteMovie(movie.movieId)
+            .then((newMovie) => {
+                const newMovies = movies.map(
+                    (previousMovie) => previousMovie.movieId === newMovie.movieId ? newMovie : previousMovie
+                );
+                setMovies(newMovies);
+            })
+        .catch(err => console.error(err))
+    }
+
+    const onMovieSearchSubmit = (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        moviesApi.getMovies()
+            .then(movies => {
+                const filteredMovies = movies.filter((movie) => {
+                    return movie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
+                })
+                setMovies(filteredMovies);
             })
             .catch(err => console.error(err))
-        }
-    }, [isTokenCorrect, history]);
+            .finally(() => {
+                setIsLoading(false)
+                resetSearch()
+            });
+    };
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -73,10 +110,21 @@ function App() {
                 <Header isMain={true} loggedIn={loggedIn} onSignOut={onSignOut}/>
                     <Switch>
                         <ProtectedRoute exact path="/" loggedIn={loggedIn} component={Main} />
-                        <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} />
+                        <ProtectedRoute
+                            path="/movies"
+                            loggedIn={loggedIn}
+                            component={Movies}
+                            isLoading={isLoading}
+                            movies={movies}
+                            searchProps={searchProps}
+                            handleMovie={handleMovie}
+                            onMovieSearchSubmit={onMovieSearchSubmit}
+                        />
                         <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />
                         <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} />
-                        <Route path="/signup" onRegister={onRegister} component={Register}/>
+                        <Route path="/signup" render={() => {
+                            return <Register onRegister={onRegister} />
+                        }}/>
                         <Route path="/signin" onLogin={onLogin} component={Login} />
                         <Route path="/*" component={NotFoundError} />
                     </Switch>

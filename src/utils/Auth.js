@@ -33,6 +33,6 @@ class Auth {
     };
 };
 
-const auth = new Auth('http:/api.filmderdi-zerttewsi.nomoredomains.icu/');
+const auth = new Auth('http://localhost:3001/');
 
 export default auth;
