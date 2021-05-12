@@ -4,28 +4,35 @@ import Preloader from "../Preloader/Preloader"
 import React, { useEffect, useState } from "react";
 import moviesApi from '../../utils/MoviesApi';
 
+import { useInput } from '../../hooks/useInput';
+
 const Movies = (props) => {
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [movies, setMovies] = useState([]);
 
-    const onClick = (e) => {
+    const [searchProps, resetSearch] = useInput('');
+
+    const onSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
-    }
-
-    useEffect(() => {
         moviesApi.getMovies()
             .then(movies => {
-                setMovies(movies);
+                const filteredMovies = movies.filter((movie) => {
+                    return movie.nameRU.includes(searchProps.value)
+                })
+                setMovies(filteredMovies);
             })
             .catch(err => console.error(err))
-            .finally(() => setIsLoading(false))
-    })
+            .finally(() => {
+                setIsLoading(false)
+                resetSearch()
+            })
+    }
 
     return (
         <section className="movies">
-            <SearchForm onClick={onClick}/>
+            <SearchForm onSubmit={onSubmit} searchProps={searchProps} />
             {
                 isLoading
                 ? <Preloader />
