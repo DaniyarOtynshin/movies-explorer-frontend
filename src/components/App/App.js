@@ -47,6 +47,12 @@ function App() {
             })
     };
 
+    const onSignOut = () => {
+        localStorage.removeItem('token');
+        setLoggedIn(false);
+        history.push('/signin');
+      };
+
     useEffect(() => {
         if (localStorage.getItem('token')) {
             const token = localStorage.getItem('token');
@@ -64,7 +70,7 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
-                <Header isMain={true} loggedIn={loggedIn}/>
+                <Header isMain={true} loggedIn={loggedIn} onSignOut={onSignOut}/>
                     <Switch>
                         <ProtectedRoute exact path="/" loggedIn={loggedIn} component={Main} />
                         <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} />
