@@ -31,7 +31,7 @@ const Header = (props) => {
                     <div className={ `menu__body${isActive ? " menu__body_active" : ""}` }>
                         <ul className="menu__list">
                         {
-                            props.isLoggedIn
+                            props.loggedIn
                             ? <>
                                 {
                                     isActive
@@ -40,10 +40,10 @@ const Header = (props) => {
                                 }
                                 <li className="menu__item"><Link to="/movies" className="menu__link menu__link_active">Фильмы</Link></li>
                                 <li className="menu__item"><Link to="/saved-movies" className="menu__link">Сохранённые фильмы</Link></li>
-                                <a href="/profile" className="menu__profile-account">
+                                <Link to="/profile" className="menu__profile-account">
                                     <p className="menu__link menu__profile-text">Аккаунт</p>
                                     <span className="menu__profile"/>
-                                </a>
+                                </Link>
                             </>
                             : <>
                                 <li className="menu__item"><Link to="/signup" className="menu__link">Регистрация</Link></li>
