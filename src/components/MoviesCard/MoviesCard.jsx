@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import crossPath from '../../images/cross.svg';
 
 const convertDuration = (duration) => {

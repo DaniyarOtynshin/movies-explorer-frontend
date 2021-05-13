@@ -61,6 +61,6 @@ class MainApi {
     };
 }
 
-const mainApi = new MainApi('http:/api.filmderdi-zerttewsi.nomoredomains.icu/');
+const mainApi = new MainApi('http://localhost:3001/');
 
 export default mainApi;
