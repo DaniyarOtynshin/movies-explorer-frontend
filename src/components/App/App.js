@@ -131,7 +131,7 @@ function App() {
                             component={Movies}
                         />
                         <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />
-                        <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} />
+                        <ProtectedRoute path="/profile" onSignOut={onSignOut} loggedIn={loggedIn} component={Profile} />
                         <Route path="/signup" render={() => {
                             return <Register loggedIn={loggedIn} onRegister={onRegister} />
                         }}/>

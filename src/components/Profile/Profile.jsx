@@ -9,7 +9,7 @@ const Profile = (props) => {
                 <span className="profile__input-title profile__input-title_bottom">E-mail</span>
                 <button className="profile__button">Редактировать</button>
             </form>
-            <button className="profile__exit-button">Выйти из аккаунта</button>
+            <button onClick={props.onSignOut} className="profile__exit-button">Выйти из аккаунта</button>
         </section>
     )
 };
