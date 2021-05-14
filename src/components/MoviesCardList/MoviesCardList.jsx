@@ -9,13 +9,14 @@ const MoviesCardList = (props) => {
                 props.movies.map((movieData) => {
                     return (
                         <MoviesCard
-                            handlecheck={props.handlecheck}
+                            movieData={movieData}
+                            handleMovie={props.handleMovie}
                             key={movieData.id}
                             isSaved={props.isSaved}
-                            isChecked={props.isChecked}
                             name={movieData.nameRU}
                             image={movieData.image?.url}
                             duration={movieData.duration}
+                            owner={movieData.owner}
                         />
                     )
                 })

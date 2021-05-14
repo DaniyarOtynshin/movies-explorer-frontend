@@ -57,28 +57,29 @@ function App() {
     };
 
     const handleMovie = (movie) => {
+        const token = localStorage.getItem('token');
         const isAdded = movie.owner === currentUser._id;
         isAdded
-        ? handleMovieAdd(movie)
-        : handleMovieDelete(movie)
+        ? handleMovieAdd(movie, token)
+        : handleMovieDelete(movie, token)
     }
 
-    const handleMovieAdd = (movieBody) => {
-        mainApi.addMovie(movieBody)
+    const handleMovieAdd = (movie, token) => {
+        mainApi.addMovie(movie, token)
             .then((newMovie) => {
                 const newMovies = movies.map(
-                    (previousMovie) => previousMovie.movieId === newMovie.movieId ? newMovie : previousMovie
+                    (previousMovie) => previousMovie === newMovie.movieId ? newMovie : previousMovie
                 );
                 setMovies(newMovies);
             })
         .catch(err => console.error(err))
       }
     
-    const handleMovieDelete = (movie) => {
-        mainApi.deleteMovie(movie.movieId)
+    const handleMovieDelete = (movie, token) => {
+        mainApi.deleteMovie(movie.movieId, token)
             .then((newMovie) => {
                 const newMovies = movies.map(
-                    (previousMovie) => previousMovie.movieId === newMovie.movieId ? newMovie : previousMovie
+                    (previousMovie) => previousMovie.movieId && (previousMovie.movieId === newMovie.movieId) ? newMovie : previousMovie
                 );
                 setMovies(newMovies);
             })

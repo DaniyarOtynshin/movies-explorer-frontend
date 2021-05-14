@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import crossPath from '../../images/cross.svg';
 
 const convertDuration = (duration) => {
@@ -8,7 +9,13 @@ const convertDuration = (duration) => {
 
 const URL = 'https://api.nomoreparties.co';
 
-const MoviesCard = ({ name, image, duration, isSaved, isChecked, handleCheck }) => {
+const MoviesCard = ({ name, image, duration, owner, isSaved, handleMovie, movieData }) => {
+    const [isChecked, setIsChecked] = useState(false);
+
+    useEffect(() => {
+        owner ? setIsChecked(true) : setIsChecked(false)
+    }, [ owner ]) 
+
     return (
         <div className="movies-card">
             <img src={ URL + image } alt="Обложка" className="movies-card__image"/>
@@ -19,7 +26,7 @@ const MoviesCard = ({ name, image, duration, isSaved, isChecked, handleCheck }) 
                     ? <img src={ crossPath } alt="удалить" className="card-info__remove"/>
                     : (
                         <label className={isChecked ? "card-info__label _checked" : "card-info__label"}>
-                            <input type="checkbox" onClick={handleCheck} className="card-info__button"/>
+                            <input type="checkbox" onClick={() => handleMovie(movieData)} className="card-info__button"/>
                             <span className="card-info__checkbox"></span>
                         </label>
                     )
