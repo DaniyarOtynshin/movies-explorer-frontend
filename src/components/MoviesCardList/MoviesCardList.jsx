@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import MoviesCard from "../MoviesCard/MoviesCard"
 
 const MoviesCardList = (props) => {
+    const [movies, setMovies] = useState([])
+
     const handleIsChecked = (id) => {
         return props.savedMovies.some((savedMovie) => savedMovie.movieId === id);
     }
@@ -11,10 +13,19 @@ const MoviesCardList = (props) => {
         return props.savedMovies.filter((savedMovie) => savedMovie.movieId === id)[0];
     }
 
+    useEffect(() => {
+        console.log(props.isFiltered)
+        let movies = props.movies;
+        movies = props.isFiltered
+        ? movies.filter((movie) => movie.duration <= 40)
+        : movies
+        setMovies(movies);
+    }, [props.isFiltered, props.movies])
+
     return (
         <div className="movies-card-list page__section">
             {
-                props.movies.map((movieData) => {
+                movies.map((movieData) => {
                     return (
                         <MoviesCard
                             key={movieData.id}

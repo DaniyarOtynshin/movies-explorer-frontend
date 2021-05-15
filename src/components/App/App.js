@@ -23,6 +23,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [movies, setMovies] = useState([]);
     const [savedMovies, setSavedMovies] = useState([]);
+    const [isFiltered, setIsFiltered] = useState(false);
     const [searchProps, resetSearch] = useInput('');
 
     const history = useHistory();
@@ -105,6 +106,12 @@ function App() {
         });
     };
 
+    const handleFilter = () => {
+        isFiltered
+        ? setIsFiltered(false)
+        : setIsFiltered(true)
+    }
+
     useEffect(() => {
         if (localStorage.getItem('token')) {
             const token = localStorage.getItem('token');
@@ -132,6 +139,8 @@ function App() {
                             searchProps={searchProps}
                             handleMovie={handleMovie}
                             onMovieSearchSubmit={onMovieSearchSubmit}
+                            handleFilter={handleFilter}
+                            isFiltered={isFiltered}
                             component={Movies}
                         />
                         <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />

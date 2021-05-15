@@ -66,10 +66,6 @@
     background-color: #2BE080;
 }
 
-/* .card-info__button:checked + .card-info__checkbox::before {
-    background-color: #2BE080;
-} */
-
 .card-info__remove {
     width: 16px;
     height: 16px;

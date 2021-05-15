@@ -6,7 +6,12 @@ import React from "react";
 const Movies = (props) => {
     return (
         <section className="movies">
-            <SearchForm onSubmit={props.onMovieSearchSubmit} searchProps={props.searchProps} />
+            <SearchForm
+                onSubmit={props.onMovieSearchSubmit}
+                searchProps={props.searchProps}
+                isFiltered={props.isFiltered}
+                handleFilter={props.handleFilter}
+            />
             {
                 props.isLoading
                 ? <Preloader />
@@ -15,6 +20,7 @@ const Movies = (props) => {
                     isSaved={props.isSaved}
                     movies={props.movies}
                     savedMovies={props.savedMovies}
+                    isFiltered={props.isFiltered}
                 />
             }
         </section>
