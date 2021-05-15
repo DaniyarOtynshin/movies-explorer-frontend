@@ -10,9 +10,13 @@ class MainApi {
           return Promise.reject(`Что-то пошло не так: ${res.status}`);
       };
 
-    getAllMovies() {
+    getAllMovies(token) {
         return fetch(`${this._url}movies`, {
             method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
         })
         .then((res) => this._checkResponse(res))
     };
@@ -39,6 +43,7 @@ class MainApi {
                 nameEN: movie.nameEN,
             })
         })
+        .then((res) => this._checkResponse(res))
     }
 
     deleteMovie(id, token) {

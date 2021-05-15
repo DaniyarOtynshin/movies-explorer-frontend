@@ -3,20 +3,29 @@ import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard"
 
 const MoviesCardList = (props) => {
+    const handleIsChecked = (id) => {
+        return props.savedMovies.some((savedMovie) => savedMovie.movieId === id);
+    }
+
+    const findSavedMovieId = (id) => {
+        return props.savedMovies.filter((savedMovie) => savedMovie.movieId === id)[0];
+    }
+
     return (
         <div className="movies-card-list page__section">
             {
                 props.movies.map((movieData) => {
                     return (
                         <MoviesCard
+                            key={movieData.id}
                             movieData={movieData}
                             handleMovie={props.handleMovie}
-                            key={movieData.id}
                             isSaved={props.isSaved}
                             name={movieData.nameRU}
                             image={movieData.image?.url}
                             duration={movieData.duration}
-                            owner={movieData.owner}
+                            savedMovie={findSavedMovieId(movieData.id)}
+                            isChecked={handleIsChecked(movieData.id)}
                         />
                     )
                 })

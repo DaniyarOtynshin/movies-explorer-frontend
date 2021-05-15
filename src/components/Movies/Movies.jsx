@@ -14,6 +14,7 @@ const Movies = (props) => {
                     handleMovie={props.handleMovie}
                     isSaved={props.isSaved}
                     movies={props.movies}
+                    savedMovies={props.savedMovies}
                 />
             }
         </section>

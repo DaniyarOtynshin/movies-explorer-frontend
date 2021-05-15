@@ -9,12 +9,11 @@ const convertDuration = (duration) => {
 
 const URL = 'https://api.nomoreparties.co';
 
-const MoviesCard = ({ name, image, duration, owner, isSaved, handleMovie, movieData }) => {
-    const [isChecked, setIsChecked] = useState(false);
+const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, movieData, savedMovie }) => {
 
-    useEffect(() => {
-        owner ? setIsChecked(true) : setIsChecked(false)
-    }, [ owner ]) 
+    const handleClick = () => {
+        isChecked ? handleMovie(isChecked, savedMovie) : handleMovie(isChecked, movieData);
+    }
 
     return (
         <div className="movies-card">
@@ -26,7 +25,7 @@ const MoviesCard = ({ name, image, duration, owner, isSaved, handleMovie, movieD
                     ? <img src={ crossPath } alt="удалить" className="card-info__remove"/>
                     : (
                         <label className={isChecked ? "card-info__label _checked" : "card-info__label"}>
-                            <input type="checkbox" onClick={() => handleMovie(movieData)} className="card-info__button"/>
+                            <input type="checkbox" onClick={handleClick} className="card-info__button"/>
                             <span className="card-info__checkbox"></span>
                         </label>
                     )

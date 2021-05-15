@@ -22,7 +22,7 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [movies, setMovies] = useState([]);
-
+    const [savedMovies, setSavedMovies] = useState([]);
     const [searchProps, resetSearch] = useInput('');
 
     const history = useHistory();
@@ -56,32 +56,26 @@ function App() {
         history.push('/signin');
     };
 
-    const handleMovie = (movie) => {
+    const handleMovie = (isChecked, movie) => {
         const token = localStorage.getItem('token');
-        const isAdded = movie.owner === currentUser._id;
-        isAdded
-        ? handleMovieAdd(movie, token)
-        : handleMovieDelete(movie, token)
+        isChecked
+        ? handleMovieDelete(movie, token)
+        : handleMovieAdd(movie, token)
     }
 
     const handleMovieAdd = (movie, token) => {
         mainApi.addMovie(movie, token)
-            .then((newMovie) => {
-                const newMovies = movies.map(
-                    (previousMovie) => previousMovie === newMovie.movieId ? newMovie : previousMovie
-                );
-                setMovies(newMovies);
+            .then((savedMovie) => {
+                setSavedMovies([...savedMovies, savedMovie]);
             })
         .catch(err => console.error(err))
       }
     
     const handleMovieDelete = (movie, token) => {
-        mainApi.deleteMovie(movie.movieId, token)
-            .then((newMovie) => {
-                const newMovies = movies.map(
-                    (previousMovie) => previousMovie.movieId && (previousMovie.movieId === newMovie.movieId) ? newMovie : previousMovie
-                );
-                setMovies(newMovies);
+        mainApi.deleteMovie(movie._id, token)
+            .then((_) => {
+                const newSavedMovies = savedMovies.filter((savedMovie) => savedMovie.movieId !== movie.movieId);
+                setSavedMovies(newSavedMovies);
             })
         .catch(err => console.error(err))
     }
@@ -89,18 +83,26 @@ function App() {
     const onMovieSearchSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        moviesApi.getMovies()
-            .then(movies => {
-                const filteredMovies = movies.filter((movie) => {
-                    return movie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
-                })
-                setMovies(filteredMovies);
+        const token = localStorage.getItem('token');
+        Promise.all([
+            moviesApi.getMovies(),
+            mainApi.getAllMovies(token),
+        ])
+        .then(([movies, savedMovies]) => {
+            const filteredMovies = movies.filter((movie) => {
+                return movie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
             })
-            .catch(err => console.error(err))
-            .finally(() => {
-                setIsLoading(false)
-                resetSearch()
-            });
+            setMovies(filteredMovies);
+            const filteredSavedMovies = savedMovies.filter((savedMovie) => {
+                return savedMovie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
+            })
+            setSavedMovies(filteredSavedMovies);
+        })
+        .catch(err => console.error(err))
+        .finally(() => {
+            setIsLoading(false)
+            resetSearch()
+        });
     };
 
     useEffect(() => {
@@ -126,6 +128,7 @@ function App() {
                             loggedIn={loggedIn}
                             isLoading={isLoading}
                             movies={movies}
+                            savedMovies={savedMovies}
                             searchProps={searchProps}
                             handleMovie={handleMovie}
                             onMovieSearchSubmit={onMovieSearchSubmit}
