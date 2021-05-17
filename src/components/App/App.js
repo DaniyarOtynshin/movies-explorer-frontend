@@ -89,14 +89,14 @@ function App() {
             moviesApi.getMovies(),
             mainApi.getAllMovies(token),
         ])
-        .then(([movies, savedMovies]) => {
-            const filteredMovies = movies.filter((movie) => {
+        .then(([moviesApi, savedMoviesApi]) => {
+            const filteredMovies = moviesApi.filter((movie) => {
                 return movie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
             })
-            setMovies(filteredMovies);
-            const filteredSavedMovies = savedMovies.filter((savedMovie) => {
+            const filteredSavedMovies = savedMoviesApi.filter((savedMovie) => {
                 return savedMovie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
             })
+            setMovies(filteredMovies);
             setSavedMovies(filteredSavedMovies);
         })
         .catch(err => console.error(err))

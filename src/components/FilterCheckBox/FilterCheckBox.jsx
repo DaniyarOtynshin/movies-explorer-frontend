@@ -1,5 +1,4 @@
 const FilterCheckBox = (props) => {
-    console.log(props)
     return (
         <label className={props.isFiltered ? "filter-check-box _checked" : "filter-check-box"}>
             <input type="checkbox" onClick={props.handleFilter} className="filter-check-box__button"/>

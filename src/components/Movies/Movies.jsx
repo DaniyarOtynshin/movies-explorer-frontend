@@ -4,6 +4,7 @@ import Preloader from "../Preloader/Preloader"
 import React from "react";
 
 const Movies = (props) => {
+    console.log(props.movies)
     return (
         <section className="movies">
             <SearchForm

@@ -23,6 +23,7 @@ class MainApi {
 
     addMovie(movie, token) {
         const URL = 'https://api.nomoreparties.co/beatfilm-movies';
+        const NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg';
         return fetch(`${this._url}movies`, {
             method: 'POST',
             headers: {
@@ -30,17 +31,17 @@ class MainApi {
                 'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
-                country: movie.country,
-                director: movie.director,
+                country: movie.country || "No information",
+                director: movie.director || "No information",
                 duration: movie.duration,
                 year: movie.year,
-                description: movie.description,
-                image: URL + movie.image.url,
+                description: movie.description || "No information",
+                image: movie.image ? URL + movie.image.url: NO_IMAGE,
                 trailer: movie.trailerLink,
-                thumbnail: URL + movie.image.formats.thumbnail.url,
+                thumbnail: movie.image ? URL + movie.image.formats.thumbnail.url: NO_IMAGE,
                 movieId: movie.id,
-                nameRU: movie.nameRU,
-                nameEN: movie.nameEN,
+                nameRU: movie.nameRU || movie.nameEN,
+                nameEN: movie.nameEN || movie.nameRU,
             })
         })
         .then((res) => this._checkResponse(res))

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import crossPath from '../../images/cross.svg';
 
 const convertDuration = (duration) => {
@@ -8,6 +7,7 @@ const convertDuration = (duration) => {
 }
 
 const URL = 'https://api.nomoreparties.co';
+const NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg';
 
 const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, movieData, savedMovie }) => {
 
@@ -15,9 +15,11 @@ const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, mo
         isChecked ? handleMovie(isChecked, savedMovie) : handleMovie(isChecked, movieData);
     }
 
+    const handleImage = () => image ? URL + image : NO_IMAGE;
+
     return (
         <div className="movies-card">
-            <img src={ URL + image } alt="Обложка" className="movies-card__image"/>
+            <img src={ handleImage() } alt="Обложка" className="movies-card__image"/>
             <div className="movies-card__card-info card-info">
                 <p className="card-info__title">{ name }</p>
                 {

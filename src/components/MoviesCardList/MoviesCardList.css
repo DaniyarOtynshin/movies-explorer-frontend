@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.movies-card-list__more._hidden {
+    display: none;
+}
+
 .more__button {
     width: 320px;
     height: 36px;
