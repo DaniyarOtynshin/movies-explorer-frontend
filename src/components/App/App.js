@@ -127,12 +127,19 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
-                <Header isMain={true} loggedIn={loggedIn} onSignOut={onSignOut}/>
                     <Switch>
-                        <ProtectedRoute exact path="/" loggedIn={loggedIn} component={Main} />
+                        <ProtectedRoute
+                            exact path="/"
+                            onSignOut={onSignOut}
+                            isMain={true}
+                            loggedIn={loggedIn}
+                            component={Main}
+                        />
                         <ProtectedRoute
                             path="/movies"
                             loggedIn={loggedIn}
+                            onSignOut={onSignOut}
+                            isMain={false}
                             isLoading={isLoading}
                             movies={movies}
                             savedMovies={savedMovies}
@@ -144,7 +151,13 @@ function App() {
                             component={Movies}
                         />
                         <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />
-                        <ProtectedRoute path="/profile" onSignOut={onSignOut} loggedIn={loggedIn} component={Profile} />
+                        <ProtectedRoute
+                            path="/profile"
+                            isMain={false}
+                            onSignOut={onSignOut}
+                            loggedIn={loggedIn}
+                            component={Profile}
+                        />
                         <Route path="/signup" render={() => {
                             return <Register loggedIn={loggedIn} onRegister={onRegister} />
                         }}/>
