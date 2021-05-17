@@ -5,7 +5,6 @@ import React from "react";
 import Header from "../Header/Header";
 
 const Movies = (props) => {
-    console.log(props.movies)
     return (
         <>
             <Header isMain={props.isMain} loggedIn={props.loggedIn} onSignOut={props.onSignOut}/>

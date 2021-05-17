@@ -147,6 +147,7 @@ function App() {
                             loggedIn={loggedIn}
                             onSignOut={onSignOut}
                             isMain={false}
+                            isSaved={false}
                             isLoading={isLoading}
                             movies={movies}
                             savedMovies={savedMovies}
@@ -160,7 +161,17 @@ function App() {
                         <ProtectedRoute
                             path="/saved-movies"
                             loggedIn={loggedIn}
+                            onSignOut={onSignOut}
+                            isMain={false}
                             isSaved={true}
+                            isLoading={isLoading}
+                            movies={movies}
+                            savedMovies={savedMovies}
+                            searchProps={searchProps}
+                            handleMovie={handleMovie}
+                            onMovieSearchSubmit={onMovieSearchSubmit}
+                            handleFilter={toggleFilter}
+                            isFiltered={isFiltered}
                             component={Movies}
                         />
                         <ProtectedRoute

@@ -22,7 +22,7 @@ class MainApi {
     };
 
     addMovie(movie, token) {
-        const URL = 'https://api.nomoreparties.co/beatfilm-movies';
+        const URL = 'https://api.nomoreparties.co';
         const NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg';
         return fetch(`${this._url}movies`, {
             method: 'POST',

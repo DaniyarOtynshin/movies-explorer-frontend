@@ -14,39 +14,49 @@ const MoviesCardList = (props) => {
     }
 
     const findSavedMovieId = (id) => {
-        return props.savedMovies.filter((savedMovie) => savedMovie.movieId === id)[0];
+        return props.savedMovies.find((savedMovie) => savedMovie.movieId === id);
     }
 
-    const handleLoadMore = () => {
-        const newMoviesToShow = movies.splice(0, 4);
+    const handleLoadMore = (moviesCount) => {
+        const newMoviesToShow = movies.splice(0, moviesCount);
         setMoviesToShow([...moviesToShow, ...newMoviesToShow])
     }
 
+    const handleImage = (movieData) => {
+        return typeof movieData.image === 'string' ? movieData.image : movieData.image?.url;
+    }
+
+    useEffect(() => {
+        const savedMovies = props.isSaved ? props.savedMovies : props.movies;
+        setMovies(savedMovies);
+        moviesRef.current = savedMovies;
+    }, [props.isSaved, props.savedMovies, props.movies])
+
     useEffect(() => {
         const showFilteredMovies = () => {
-            let movies = props.movies;
-            movies = props.isFiltered
-            ? movies.filter((movie) => movie.duration <= 40)
-            : movies
-            setMovies(movies);
-            moviesRef.current = movies;
+            let moviesToFilter = moviesRef.current;
+            moviesToFilter = props.isFiltered
+            ? moviesToFilter.filter((movie) => movie.duration <= 40)
+            : moviesToFilter
+            setMovies(moviesToFilter);
+            moviesRef.current = moviesToFilter;
         }
 
-        const preloadFirstMovies = () => {
-            const preloadedMoviesToShow = moviesRef.current.splice(0, 4);
+        const preloadFirstMovies = (moviesCount) => {
+            const preloadedMoviesToShow = moviesRef.current.splice(0, moviesCount);
             setMoviesToShow(preloadedMoviesToShow)
         }
 
         showFilteredMovies();
-        preloadFirstMovies();
-    }, [props.isFiltered, props.movies])
+        preloadFirstMovies(4);
+    }, [props.isFiltered, props.movies, props.isSaved])
 
     useEffect(() => {
-        const showLoadMoreButton = () => {
-            movies.length >= 4 ? setIsMoreHidden(false) : setIsMoreHidden(true);
+        const showLoadMoreButton = (moviesCount) => {
+            movies.length >= moviesCount ? setIsMoreHidden(false) : setIsMoreHidden(true);
         }
 
-        showLoadMoreButton()
+        showLoadMoreButton(4)
     }, [movies.length])
 
     return (
@@ -60,16 +70,16 @@ const MoviesCardList = (props) => {
                             handleMovie={props.handleMovie}
                             isSaved={props.isSaved}
                             name={movieData.nameRU}
-                            image={movieData.image?.url}
+                            image={handleImage(movieData)}
                             duration={movieData.duration}
-                            savedMovie={findSavedMovieId(movieData.id)}
+                            savedMovie={findSavedMovieId(movieData.id || movieData.movieId)}
                             isChecked={handleIsChecked(movieData.id)}
                         />
                     )
                 })
             }
             <div className={isMoreHidden ? "movies-card-list__more _hidden" : "movies-card-list__more"}>
-                <button onClick={handleLoadMore} className="more__button">ещё</button>
+                <button onClick={() => handleLoadMore(4)} className="more__button">ещё</button>
             </div>
         </div>
     )

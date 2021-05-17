@@ -15,7 +15,11 @@ const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, mo
         isChecked ? handleMovie(isChecked, savedMovie) : handleMovie(isChecked, movieData);
     }
 
-    const handleImage = () => image ? URL + image : NO_IMAGE;
+    const handleImage = () => {
+        return isSaved
+        ? image
+        : image ? URL + image : NO_IMAGE;
+    };
 
     return (
         <div className="movies-card">
@@ -24,7 +28,7 @@ const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, mo
                 <p className="card-info__title">{ name }</p>
                 {
                     isSaved
-                    ? <img src={ crossPath } alt="удалить" className="card-info__remove"/>
+                    ? <img src={ crossPath } onClick={() => handleMovie(true, movieData)} alt="удалить" className="card-info__remove"/>
                     : (
                         <label className={isChecked ? "card-info__label _checked" : "card-info__label"}>
                             <input type="checkbox" onClick={handleClick} className="card-info__button"/>
