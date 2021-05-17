@@ -81,6 +81,20 @@ function App() {
         .catch(err => console.error(err))
     }
 
+    const filterMovies = (moviesApi) => {
+        const filteredMovies =  moviesApi.filter((movie) => {
+            return movie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
+        })
+        return filteredMovies;
+    }
+
+    const filterSavedMovies = (savedMoviesApi) => {
+        const filteredSavedMovies = savedMoviesApi.filter((savedMovie) => {
+            return savedMovie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
+        })
+        return filteredSavedMovies;
+    }
+
     const onMovieSearchSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -90,12 +104,8 @@ function App() {
             mainApi.getAllMovies(token),
         ])
         .then(([moviesApi, savedMoviesApi]) => {
-            const filteredMovies = moviesApi.filter((movie) => {
-                return movie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
-            })
-            const filteredSavedMovies = savedMoviesApi.filter((savedMovie) => {
-                return savedMovie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
-            })
+            const filteredMovies = filterMovies(moviesApi);
+            const filteredSavedMovies = filterSavedMovies(savedMoviesApi);
             setMovies(filteredMovies);
             setSavedMovies(filteredSavedMovies);
         })
@@ -150,7 +160,12 @@ function App() {
                             isFiltered={isFiltered}
                             component={Movies}
                         />
-                        <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} isSaved={true} component={Movies} />
+                        <ProtectedRoute
+                            path="/saved-movies"
+                            loggedIn={loggedIn}
+                            isSaved={true}
+                            component={Movies}
+                        />
                         <ProtectedRoute
                             path="/profile"
                             isMain={false}
