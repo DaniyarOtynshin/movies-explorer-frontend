@@ -4,7 +4,6 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -116,10 +115,8 @@ function App() {
         });
     };
 
-    const handleFilter = () => {
-        isFiltered
-        ? setIsFiltered(false)
-        : setIsFiltered(true)
+    const toggleFilter = () => {
+        setIsFiltered((prevIsFiltered) => !prevIsFiltered)
     }
 
     useEffect(() => {
@@ -156,7 +153,7 @@ function App() {
                             searchProps={searchProps}
                             handleMovie={handleMovie}
                             onMovieSearchSubmit={onMovieSearchSubmit}
-                            handleFilter={handleFilter}
+                            handleFilter={toggleFilter}
                             isFiltered={isFiltered}
                             component={Movies}
                         />
