@@ -1,19 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import MoviesCard from "../MoviesCard/MoviesCard"
 
-const MoviesCardList = (props) => {
-    const [movies, setMovies] = useState([]);
+const SavedMoviesCardList = (props) => {
+    const [savedMovies, setSavedMovies] = useState([]);
     const [isMoreHidden, setIsMoreHidden] = useState(false);
     const [loadIndex, setLoadIndex] = useState(3);
-
-    const handleIsChecked = (id) => {
-        return props.savedMovies.some((savedMovie) => savedMovie.movieId === id);
-    }
-
-    const findSavedMovieId = (id) => {
-        return props.savedMovies.find((savedMovie) => savedMovie.movieId === id);
-    }
 
     const handleImage = (movieData) => {
         return typeof movieData.image === 'string' ? movieData.image : movieData.image?.url;
@@ -24,30 +16,28 @@ const MoviesCardList = (props) => {
     }
 
     useEffect(() => {
-        const showFilteredMovies = () => {
-            let moviesToFilter = props.movies;
+        const showFilteredMovies = (moviesToFilter) => {
             moviesToFilter = props.isFiltered
             ? moviesToFilter.filter((movie) => movie.duration <= 40)
             : moviesToFilter
-            setMovies(moviesToFilter);
-            setLoadIndex(3);
+            setSavedMovies(moviesToFilter);
         }
 
-        showFilteredMovies();
-    }, [props.isFiltered, props.movies])
+        showFilteredMovies(props.savedMovies);
+    }, [props.isFiltered, props.savedMovies, props.isSaved])
 
     useEffect(() => {
         const showLoadMoreButton = () => {
-            movies.length <= loadIndex + 1 ? setIsMoreHidden(true) : setIsMoreHidden(false);
+            savedMovies.length <= loadIndex + 1 ? setIsMoreHidden(true) : setIsMoreHidden(false);
         }
 
         showLoadMoreButton()
-    }, [movies.length, loadIndex])
+    }, [savedMovies.length, loadIndex])
 
     return (
         <div className="movies-card-list page__section">
             {
-                movies.map((movieData, index) => {
+                savedMovies.map((movieData, index) => {
                     return index <= loadIndex && (
                         <MoviesCard
                             key={movieData.id}
@@ -57,8 +47,6 @@ const MoviesCardList = (props) => {
                             name={movieData.nameRU}
                             image={handleImage(movieData)}
                             duration={movieData.duration}
-                            savedMovie={findSavedMovieId(movieData.id || movieData.movieId)}
-                            isChecked={handleIsChecked(movieData.id)}
                         />
                     )
                 })
@@ -70,4 +58,4 @@ const MoviesCardList = (props) => {
     )
 };
 
-export default MoviesCardList;
+export default SavedMoviesCardList;

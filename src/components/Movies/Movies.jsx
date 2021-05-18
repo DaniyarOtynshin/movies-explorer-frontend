@@ -3,6 +3,7 @@ import SearchForm from "../SearchForm/SearchForm"
 import Preloader from "../Preloader/Preloader"
 import React from "react";
 import Header from "../Header/Header";
+import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 
 const Movies = (props) => {
     return (
@@ -17,14 +18,21 @@ const Movies = (props) => {
                 />
                 {
                     props.isLoading
-                    ? <Preloader />
-                    : <MoviesCardList
-                        handleMovie={props.handleMovie}
-                        isSaved={props.isSaved}
-                        movies={props.movies}
-                        savedMovies={props.savedMovies}
-                        isFiltered={props.isFiltered}
-                    />
+                        ? <Preloader />
+                        : props.isSaved
+                            ? <SavedMoviesCardList
+                            handleMovie={props.handleMovie}
+                            isSaved={props.isSaved}
+                            savedMovies={props.savedMovies}
+                            showFilteredMovies={props.showFilteredMovies}
+                            isFiltered={props.isFiltered} />
+                            : <MoviesCardList
+                            handleMovie={props.handleMovie}
+                            isSaved={props.isSaved}
+                            movies={props.movies}
+                            savedMovies={props.savedMovies}
+                            showFilteredMovies={props.showFilteredMovies}
+                            isFiltered={props.isFiltered} />
                 }
             </section>
         </>

@@ -165,7 +165,6 @@ function App() {
                             isMain={false}
                             isSaved={true}
                             isLoading={isLoading}
-                            movies={movies}
                             savedMovies={savedMovies}
                             searchProps={searchProps}
                             handleMovie={handleMovie}
