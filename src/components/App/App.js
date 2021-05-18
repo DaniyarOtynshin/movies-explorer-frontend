@@ -27,7 +27,7 @@ function App() {
 
     const history = useHistory();
 
-    const onLogin = (password, email) => {
+    const onLogin = ({ password, email }) => {
         auth.login(password, email)
             .then(data => {
                 if (data.token) {
@@ -39,8 +39,8 @@ function App() {
             .catch(err => console.error(err))
       }
 
-    const onRegister = (email, password, name) => {
-        auth.register(email, password, name)
+    const onRegister = ({ email, password, name }) => {
+        auth.register(password, email, name)
             .then(data => {
                 setCurrentUser({
                     email: data.email,
