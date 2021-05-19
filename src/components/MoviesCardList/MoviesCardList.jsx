@@ -6,6 +6,7 @@ const MoviesCardList = (props) => {
     const [movies, setMovies] = useState([]);
     const [isMoreHidden, setIsMoreHidden] = useState(false);
     const [loadIndex, setLoadIndex] = useState(3);
+    const [loadMovies, setLoadMovies] = useState(4);
 
     const handleIsChecked = (id) => {
         return props.savedMovies.some((savedMovie) => savedMovie.movieId === id);
@@ -24,17 +25,38 @@ const MoviesCardList = (props) => {
     }
 
     useEffect(() => {
+        const numberOfMovieCards = () => {
+            const width = window.innerWidth;
+            if (width < 1200) {
+                setLoadMovies(2)
+                setLoadIndex(1)
+            }
+            if (width <= 748) {
+                setLoadMovies(1)
+                setLoadIndex(0)
+            }
+            if (width >= 1200) {
+                setLoadMovies(4)
+                setLoadIndex(3)
+            }
+        }
+
+        window.addEventListener('resize', (numberOfMovieCards));
+
+        numberOfMovieCards();
+    }, [])
+
+    useEffect(() => {
         const showFilteredMovies = () => {
             let moviesToFilter = props.movies;
             moviesToFilter = props.isFiltered
             ? moviesToFilter.filter((movie) => movie.duration <= 40)
             : moviesToFilter
             setMovies(moviesToFilter);
-            setLoadIndex(3);
         }
 
         showFilteredMovies();
-    }, [props.isFiltered, props.movies])
+    }, [props.isFiltered, props.movies, loadMovies])
 
     useEffect(() => {
         const showLoadMoreButton = () => {
@@ -66,7 +88,7 @@ const MoviesCardList = (props) => {
                 })
             }
             <div className={isMoreHidden ? "movies-card-list__more _hidden" : "movies-card-list__more"}>
-                <button onClick={() => handleLoadMore(4)} className="more__button">ещё</button>
+                <button onClick={() => handleLoadMore(loadMovies)} className="more__button">ещё</button>
             </div>
         </div>
     )
