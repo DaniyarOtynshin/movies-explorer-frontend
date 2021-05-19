@@ -76,6 +76,7 @@ const MoviesCardList = (props) => {
                         <MoviesCard
                             key={movieData.id}
                             movieData={movieData}
+                            trailerLink={movieData.trailerLink}
                             handleMovie={props.handleMovie}
                             isSaved={props.isSaved}
                             name={movieData.nameRU}

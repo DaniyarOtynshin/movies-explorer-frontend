@@ -9,7 +9,7 @@ const convertDuration = (duration) => {
 const URL = 'https://api.nomoreparties.co';
 const NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg';
 
-const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, movieData, savedMovie }) => {
+const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, movieData, savedMovie, trailerLink }) => {
 
     const handleClick = () => {
         isChecked ? handleMovie(isChecked, savedMovie) : handleMovie(isChecked, movieData);
@@ -22,7 +22,7 @@ const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, mo
     };
 
     return (
-        <div className="movies-card">
+        <a rel="noreferrer" target="_blank" href={trailerLink} className="movies-card">
             <img src={ handleImage() } alt="Обложка" className="movies-card__image"/>
             <div className="movies-card__card-info card-info">
                 <p className="card-info__title">{ name }</p>
@@ -38,7 +38,7 @@ const MoviesCard = ({ name, image, duration, isChecked, isSaved, handleMovie, mo
                 }
             </div>
             <p className="card-info__time">{ convertDuration(duration) }</p>
-        </div>
+        </a>
     )
 };
 

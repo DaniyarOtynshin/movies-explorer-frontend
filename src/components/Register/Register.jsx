@@ -24,6 +24,7 @@ const Register = (props) => {
                         onChange={handleChange}
                         name="name"
                         required
+                        pattern='[a-zA-Zа-яА-Я -]{1,}'
                         minLength='2'
                         className="register__input form-input"
                     />

@@ -67,6 +67,7 @@ const SavedMoviesCardList = (props) => {
                             key={movieData.id}
                             movieData={movieData}
                             handleMovie={props.handleMovie}
+                            trailerLink={movieData.trailerLink}
                             isSaved={props.isSaved}
                             name={movieData.nameRU}
                             image={handleImage(movieData)}
