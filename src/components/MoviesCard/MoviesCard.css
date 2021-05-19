@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.movies-card:last-of-type {
+.movies-card:nth-of-type(4n) {
     margin: 0;
 }
 

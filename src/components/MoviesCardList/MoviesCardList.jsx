@@ -5,7 +5,7 @@ import MoviesCard from "../MoviesCard/MoviesCard"
 const MoviesCardList = (props) => {
     const [movies, setMovies] = useState([]);
     const [isMoreHidden, setIsMoreHidden] = useState(false);
-    const [loadIndex, setLoadIndex] = useState(3);
+    const [loadIndex, setLoadIndex] = useState(11);
     const [loadMovies, setLoadMovies] = useState(4);
 
     const handleIsChecked = (id) => {
@@ -29,15 +29,15 @@ const MoviesCardList = (props) => {
             const width = window.innerWidth;
             if (width < 1200) {
                 setLoadMovies(2)
-                setLoadIndex(1)
+                setLoadIndex(7)
             }
-            if (width <= 738) {
+            if (width < 748) {
                 setLoadMovies(1)
-                setLoadIndex(0)
+                setLoadIndex(4)
             }
             if (width >= 1200) {
                 setLoadMovies(4)
-                setLoadIndex(3)
+                setLoadIndex(11)
             }
         }
 
