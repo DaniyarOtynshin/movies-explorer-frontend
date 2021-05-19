@@ -147,12 +147,11 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
                     <Switch>
-                        <ProtectedRoute
+                        <Route
                             exact path="/"
-                            onSignOut={onSignOut}
-                            isMain={true}
-                            loggedIn={loggedIn}
-                            component={Main}
+                            render={() => {
+                                return <Main onSignOut={onSignOut} isMain={true} loggedIn={loggedIn}/>
+                            }}
                         />
                         <ProtectedRoute
                             path="/movies"

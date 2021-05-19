@@ -21,8 +21,6 @@ const Profile = (props) => {
         setIsEdit(true);
     }
 
-    console.log(values)
-
     useEffect(() => {
         if (currentUser) {
           resetFrom(currentUser, {}, true);
