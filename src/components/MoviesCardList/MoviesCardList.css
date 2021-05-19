@@ -2,7 +2,6 @@
     min-height: 458px;
     padding: 70px 0 0;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 32px;
 }

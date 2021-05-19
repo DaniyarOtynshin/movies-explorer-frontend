@@ -13,7 +13,6 @@ import Register from '../Register/Register';
 
 import auth from '../../utils/Auth';
 import mainApi from '../../utils/MainApi';
-import { useInput } from '../../hooks/useInput';
 import moviesApi from '../../utils/MoviesApi';
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
     const [movies, setMovies] = useState([]);
     const [savedMovies, setSavedMovies] = useState([]);
     const [isFiltered, setIsFiltered] = useState(false);
-    const [searchProps, resetSearch] = useInput('');
 
     const history = useHistory();
 
@@ -92,21 +90,21 @@ function App() {
         .catch(err => console.error(err))
     }
 
-    const filterMovies = (moviesApi) => {
+    const filterMovies = (moviesApi, searchValues) => {
         const filteredMovies =  moviesApi.filter((movie) => {
-            return movie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
+            return movie.nameRU.toLowerCase().includes(searchValues.search.toLowerCase())
         })
         return filteredMovies;
     }
 
-    const filterSavedMovies = (savedMoviesApi) => {
+    const filterSavedMovies = (savedMoviesApi, searchValues) => {
         const filteredSavedMovies = savedMoviesApi.filter((savedMovie) => {
-            return savedMovie.nameRU.toLowerCase().includes(searchProps.value.toLowerCase())
+            return savedMovie.nameRU.toLowerCase().includes(searchValues.search.toLowerCase())
         })
         return filteredSavedMovies;
     }
 
-    const onMovieSearchSubmit = (e) => {
+    const onMovieSearchSubmit = (e, searchValues) => {
         e.preventDefault();
         setIsLoading(true);
         const token = localStorage.getItem('token');
@@ -115,15 +113,14 @@ function App() {
             mainApi.getAllMovies(token),
         ])
         .then(([moviesApi, savedMoviesApi]) => {
-            const filteredMovies = filterMovies(moviesApi);
-            const filteredSavedMovies = filterSavedMovies(savedMoviesApi);
+            const filteredMovies = filterMovies(moviesApi, searchValues);
+            const filteredSavedMovies = filterSavedMovies(savedMoviesApi, searchValues);
             setMovies(filteredMovies);
             setSavedMovies(filteredSavedMovies);
         })
         .catch(err => console.error(err))
         .finally(() => {
             setIsLoading(false)
-            resetSearch()
         });
     };
 
@@ -162,7 +159,6 @@ function App() {
                             isLoading={isLoading}
                             movies={movies}
                             savedMovies={savedMovies}
-                            searchProps={searchProps}
                             handleMovie={handleMovie}
                             onMovieSearchSubmit={onMovieSearchSubmit}
                             handleFilter={toggleFilter}
@@ -177,7 +173,6 @@ function App() {
                             isSaved={true}
                             isLoading={isLoading}
                             savedMovies={savedMovies}
-                            searchProps={searchProps}
                             handleMovie={handleMovie}
                             onMovieSearchSubmit={onMovieSearchSubmit}
                             handleFilter={toggleFilter}

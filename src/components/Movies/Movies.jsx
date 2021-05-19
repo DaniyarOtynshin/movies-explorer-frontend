@@ -12,7 +12,6 @@ const Movies = (props) => {
             <section className="movies">
                 <SearchForm
                     onSubmit={props.onMovieSearchSubmit}
-                    searchProps={props.searchProps}
                     isFiltered={props.isFiltered}
                     handleFilter={props.handleFilter}
                 />

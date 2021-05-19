@@ -47,7 +47,9 @@ const MoviesCardList = (props) => {
     return (
         <div className="movies-card-list page__section">
             {
-                movies.map((movieData, index) => {
+                movies.length === 0
+                ? "Ничего не найдено"
+                : movies.map((movieData, index) => {
                     return index <= loadIndex && (
                         <MoviesCard
                             key={movieData.id}
