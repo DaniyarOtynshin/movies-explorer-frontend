@@ -68,11 +68,12 @@ class MainApi {
         .then(data => data)
       }
 
-    updateCurrentProfile({ email, name }) {
+    updateCurrentProfile(email, name, token) {
         return fetch(`${this._url}users/me`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify({
               email,

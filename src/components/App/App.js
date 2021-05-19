@@ -56,6 +56,18 @@ function App() {
         history.push('/signin');
     };
 
+    const onEditProfile = ({ email, name }) => {
+        const token = localStorage.getItem('token');
+        mainApi.updateCurrentProfile(email, name, token)
+            .then(data => {
+                setCurrentUser({
+                    email: data.email,
+                    name: data.name
+                })
+                history.push('/');
+            })
+    }
+
     const handleMovie = (isChecked, movie) => {
         const token = localStorage.getItem('token');
         isChecked
@@ -179,6 +191,7 @@ function App() {
                             onSignOut={onSignOut}
                             loggedIn={loggedIn}
                             component={Profile}
+                            onEditProfile={onEditProfile}
                         />
                         <Route path="/signup" render={() => {
                             return <Register loggedIn={loggedIn} onRegister={onRegister} />
