@@ -48,7 +48,7 @@ const MoviesCardList = (props) => {
         <div className="movies-card-list page__section">
             {
                 movies.length === 0
-                ? "Ничего не найдено"
+                ? <p className="movies-card-list__not-found">Ничего не найдено :(</p>
                 : movies.map((movieData, index) => {
                     return index <= loadIndex && (
                         <MoviesCard

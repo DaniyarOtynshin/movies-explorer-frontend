@@ -2,7 +2,7 @@ import findPath from '../../images/search.svg';
 import FilterCheckBox from '../FilterCheckBox/FilterCheckBox';
 import { useFormWithValidation } from "../../hooks/useForm";
 
-const SearchForm = ({onSubmit, isFiltered, handleFilter}) => {
+const SearchForm = ({onSubmit, isFiltered, handleFilter, setIsRequested}) => {
 
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
 
@@ -10,6 +10,7 @@ const SearchForm = ({onSubmit, isFiltered, handleFilter}) => {
         e.preventDefault();
         onSubmit(e, values);
         resetFrom();
+        setIsRequested(true);
     }
 
     return (

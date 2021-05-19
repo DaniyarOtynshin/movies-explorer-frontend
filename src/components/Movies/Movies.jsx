@@ -1,11 +1,18 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import SearchForm from "../SearchForm/SearchForm"
 import Preloader from "../Preloader/Preloader"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 
 const Movies = (props) => {
+
+    const [isRequested, setIsRequested] = useState(false);
+
+    useEffect(() => {
+        setIsRequested(false);
+    }, [props.isSaved])
+
     return (
         <>
             <Header isMain={props.isMain} loggedIn={props.loggedIn} onSignOut={props.onSignOut}/>
@@ -14,9 +21,10 @@ const Movies = (props) => {
                     onSubmit={props.onMovieSearchSubmit}
                     isFiltered={props.isFiltered}
                     handleFilter={props.handleFilter}
+                    setIsRequested={setIsRequested}
                 />
                 {
-                    props.isLoading
+                    isRequested ? props.isLoading
                         ? <Preloader />
                         : props.isSaved
                             ? <SavedMoviesCardList
@@ -32,6 +40,7 @@ const Movies = (props) => {
                             savedMovies={props.savedMovies}
                             showFilteredMovies={props.showFilteredMovies}
                             isFiltered={props.isFiltered} />
+                        : null
                 }
             </section>
         </>
