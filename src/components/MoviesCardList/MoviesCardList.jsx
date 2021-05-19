@@ -31,7 +31,7 @@ const MoviesCardList = (props) => {
                 setLoadMovies(2)
                 setLoadIndex(1)
             }
-            if (width <= 748) {
+            if (width <= 738) {
                 setLoadMovies(1)
                 setLoadIndex(0)
             }

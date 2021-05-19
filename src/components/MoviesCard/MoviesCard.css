@@ -106,6 +106,7 @@
     .movies-card {
         width: 300px;
         height: 235px;
+        margin: 0;
     }
     .movies-card__image {
         height: 168px;
