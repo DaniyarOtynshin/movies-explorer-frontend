@@ -135,7 +135,6 @@ function App() {
                 .then((data) => {
                     setCurrentUser(data);
                     setLoggedIn(true);
-                    history.push('/movies');
                 });
         };
     }, [history]);

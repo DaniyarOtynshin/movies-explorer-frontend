@@ -19,7 +19,6 @@ const Header = (props) => {
     const handleOpenMenu = () => {
         setIsActive(true);
     }
-
     return (
         <header className={ `page__content ${props.isMain ? "page__content_green" : "page__content_black"}` }>
             <div className="header page__section">
