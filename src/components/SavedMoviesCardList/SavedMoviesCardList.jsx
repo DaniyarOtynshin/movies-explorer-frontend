@@ -6,6 +6,7 @@ const SavedMoviesCardList = (props) => {
     const [savedMovies, setSavedMovies] = useState([]);
     const [isMoreHidden, setIsMoreHidden] = useState(false);
     const [loadIndex, setLoadIndex] = useState(3);
+    const [loadMovies, setLoadMovies] = useState(4);
 
     const handleImage = (movieData) => {
         return typeof movieData.image === 'string' ? movieData.image : movieData.image?.url;
@@ -14,6 +15,27 @@ const SavedMoviesCardList = (props) => {
     const handleLoadMore = (moviesCount) => {
         setLoadIndex((prevLoadiIndex) => prevLoadiIndex + moviesCount);
     }
+
+    const numberOfMovieCards = () => {
+        const width = window.innerWidth;
+        if (width < 1200) {
+            setLoadMovies(2)
+            setLoadIndex(1)
+        }
+        if (width < 748) {
+            setLoadMovies(1)
+            setLoadIndex(0)
+        }
+        if (width >= 1200) {
+            setLoadMovies(4)
+            setLoadIndex(3)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', (numberOfMovieCards));
+        numberOfMovieCards();
+    }, [])
 
     useEffect(() => {
         const showFilteredMovies = (moviesToFilter) => {
@@ -37,7 +59,9 @@ const SavedMoviesCardList = (props) => {
     return (
         <div className="movies-card-list page__section">
             {
-                savedMovies.map((movieData, index) => {
+                savedMovies.length === 0
+                ? <p className="movies-card-list__not-found">Ничего не найдено :(</p>
+                : savedMovies.map((movieData, index) => {
                     return index <= loadIndex && (
                         <MoviesCard
                             key={movieData.id}
@@ -52,7 +76,7 @@ const SavedMoviesCardList = (props) => {
                 })
             }
             <div className={isMoreHidden ? "movies-card-list__more _hidden" : "movies-card-list__more"}>
-                <button onClick={() => handleLoadMore(4)} className="more__button">ещё</button>
+                <button onClick={() => handleLoadMore(loadMovies)} className="more__button">ещё</button>
             </div>
         </div>
     )

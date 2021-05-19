@@ -97,6 +97,9 @@
     .movies-card__image {
         height: 190px;
     }
+    .movies-card:nth-of-type(2n) {
+        margin: 0;
+    }
 }
 
 @media (max-width: 738px) {
