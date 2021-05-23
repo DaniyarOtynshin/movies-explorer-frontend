@@ -15,7 +15,11 @@ class Auth {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://filmderdi-zerttewsi.nomoredomains.icu/',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT',
+                'Access-Control-Allow-Headers': 'Content-Type',
             },
+            credentials: 'include',
             body: JSON.stringify({password, email})
         })
         .then((res) => this._checkResponse(res))
