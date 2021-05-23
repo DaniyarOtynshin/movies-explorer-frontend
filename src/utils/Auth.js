@@ -11,14 +11,8 @@ class Auth {
       };
 
     login(password, email) {
-        return fetch(`${this._url}signin`, {
+        return fetch(`${this._url}/signin`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://filmderdi-zerttewsi.nomoredomains.icu/',
-                'Access-Control-Allow-Methods': 'GET, POST, PUT',
-                'Access-Control-Allow-Headers': 'Content-Type',
-            },
             credentials: 'include',
             body: JSON.stringify({password, email})
         })
@@ -26,7 +20,7 @@ class Auth {
     };
 
     register(password, email, name) {
-        return fetch(`${this._url}signup`, {
+        return fetch(`${this._url}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,6 +31,6 @@ class Auth {
     };
 };
 
-const auth = new Auth('https://api.filmderdi-zerttewsi.nomoredomains.icu/');
+const auth = new Auth('https://api.filmderdi-zerttewsi.nomoredomains.icu');
 
 export default auth;
