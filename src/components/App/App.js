@@ -54,6 +54,12 @@ function App() {
         history.push('/signin');
     };
 
+    const showMessage = (result) => result;
+
+    const handleSuccessMessage = () => {
+        showMessage(true);
+    }
+
     const onEditProfile = ({ email, name }) => {
         const token = localStorage.getItem('token');
         mainApi.updateCurrentProfile(email, name, token)
@@ -62,7 +68,7 @@ function App() {
                     email: data.email,
                     name: data.name
                 })
-                history.push('/'); // Show message!
+                handleSuccessMessage(true);
             })
     }
 
@@ -227,6 +233,7 @@ function App() {
                             loggedIn={loggedIn}
                             component={Profile}
                             onEditProfile={onEditProfile}
+                            showMessage={showMessage}
                         />
                         <Route path="/signup" render={() => {
                             return <Register loggedIn={loggedIn} onRegister={onRegister} />

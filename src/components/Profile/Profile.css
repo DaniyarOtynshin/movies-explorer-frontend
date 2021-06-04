@@ -93,6 +93,19 @@
     border: none;
 }
 
+.profile__message {
+    visibility: visible;
+}
+
+.profile__message_hidden {
+    visibility: hidden;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13.31px;
+    color: #fff;
+    text-align: right;
+}
+
 @media (max-width: 1024px) {
     .profile__welcome {
         margin: 236px 0 0;
