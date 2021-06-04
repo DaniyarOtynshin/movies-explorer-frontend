@@ -22,6 +22,7 @@ const Movies = (props) => {
                     isFiltered={props.isFiltered}
                     handleFilter={props.handleFilter}
                     setIsRequested={setIsRequested}
+                    checkIsFilteredLocalStorage={props.checkIsFilteredLocalStorage}
                 />
                 {
                     isRequested ? props.isLoading
@@ -32,14 +33,26 @@ const Movies = (props) => {
                             isSaved={props.isSaved}
                             savedMovies={props.savedMovies}
                             showFilteredMovies={props.showFilteredMovies}
-                            isFiltered={props.isFiltered} />
+                            isFiltered={props.isFiltered}
+                            checkSavedMoviesLocalStorage={props.checkSavedMoviesLocalStorage}
+                            setSavedMoviesLocalStorage={props.setSavedMoviesLocalStorage}
+                            checkIsFilteredLocalStorage={props.checkIsFilteredLocalStorage}
+                            setIsFilteredLocalStorage={props.setIsFilteredLocalStorage}
+                            />
                             : <MoviesCardList
                             handleMovie={props.handleMovie}
                             isSaved={props.isSaved}
                             movies={props.movies}
                             savedMovies={props.savedMovies}
                             showFilteredMovies={props.showFilteredMovies}
-                            isFiltered={props.isFiltered} />
+                            isFiltered={props.isFiltered}
+                            checkSavedMoviesLocalStorage={props.checkSavedMoviesLocalStorage}
+                            setSavedMoviesLocalStorage={props.setSavedMoviesLocalStorage}
+                            checkMoviesLocalStorage={props.checkMoviesLocalStorage}
+                            setMoviesLocalStorage={props.setMoviesLocalStorage}
+                            checkIsFilteredLocalStorage={props.checkIsFilteredLocalStorage}
+                            setIsFilteredLocalStorage={props.setIsFilteredLocalStorage}
+                            />
                         : null
                 }
             </section>

@@ -62,8 +62,42 @@ function App() {
                     email: data.email,
                     name: data.name
                 })
-                history.push('/');
+                history.push('/'); // Show message!
             })
+    }
+
+    const checkMoviesLocalStorage = (setMovies) => {
+        const movies = localStorage.getItem('movies');
+        if (movies) {
+            setMovies(movies);
+            setMoviesLocalStorage(movies)
+        }
+    }
+
+    const setMoviesLocalStorage = (movies) => {
+        localStorage.setItem('movies', movies)
+    }
+
+    const checkSavedMoviesLocalStorage = () => {
+        const savedMovies = localStorage.getItem('savedMovies');
+        if (savedMovies) {
+            setSavedMovies(savedMovies);
+            setSavedMoviesLocalStorage(savedMovies)
+        }
+    }
+
+    const setSavedMoviesLocalStorage = () => {
+        localStorage.setItem('savedMovies', savedMovies)
+    }
+
+    const checkIsFilteredLocalStorage = () => {
+        const isFiltered = localStorage.getItem('isFiltered');
+        setIsFiltered(isFiltered);
+        setIsFilteredLocalStorage(isFiltered);
+    }
+
+    const setIsFilteredLocalStorage = (isFiltered) => {
+        localStorage.setItem('isFiltered', isFiltered)
     }
 
     const handleMovie = (isChecked, movie) => {
@@ -162,6 +196,11 @@ function App() {
                             onMovieSearchSubmit={onMovieSearchSubmit}
                             handleFilter={toggleFilter}
                             isFiltered={isFiltered}
+                            checkMoviesLocalStorage={checkMoviesLocalStorage}
+                            setMoviesLocalStorage={setMoviesLocalStorage}
+                            checkSavedMoviesLocalStorage={checkSavedMoviesLocalStorage}
+                            setSavedMoviesLocalStorage={setSavedMoviesLocalStorage}
+                            checkIsFilteredLocalStorage={checkIsFilteredLocalStorage}
                             component={Movies}
                         />
                         <ProtectedRoute
@@ -176,6 +215,9 @@ function App() {
                             onMovieSearchSubmit={onMovieSearchSubmit}
                             handleFilter={toggleFilter}
                             isFiltered={isFiltered}
+                            checkSavedMoviesLocalStorage={checkSavedMoviesLocalStorage}
+                            setSavedMoviesLocalStorage={setSavedMoviesLocalStorage}
+                            checkIsFilteredLocalStorage={checkIsFilteredLocalStorage}
                             component={Movies}
                         />
                         <ProtectedRoute

@@ -38,6 +38,10 @@ const SavedMoviesCardList = (props) => {
     }, [])
 
     useEffect(() => {
+        props.checkSavedMoviesLocalStorage();
+    }, [props])
+
+    useEffect(() => {
         const showFilteredMovies = (moviesToFilter) => {
             moviesToFilter = props.isFiltered
             ? moviesToFilter.filter((movie) => movie.duration <= 40)

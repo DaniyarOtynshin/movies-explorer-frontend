@@ -36,5 +36,4 @@ class Auth {
 };
 
 const auth = new Auth('https://api.filmderdi-zerttewsi.nomoredomains.icu');
-
 export default auth;

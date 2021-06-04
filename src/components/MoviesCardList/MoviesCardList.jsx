@@ -47,6 +47,11 @@ const MoviesCardList = (props) => {
     }, [])
 
     useEffect(() => {
+        props.checkMoviesLocalStorage(setMovies);
+        props.checkSavedMoviesLocalStorage();
+    }, [props])
+
+    useEffect(() => {
         const showFilteredMovies = () => {
             let moviesToFilter = props.movies;
             moviesToFilter = props.isFiltered
