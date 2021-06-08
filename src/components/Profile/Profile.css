@@ -60,6 +60,7 @@
     font-size: 13px;
     line-height: 15.73px;
     color: #fff;
+    position: relative;
 }
 
 .profile__button:hover {
@@ -94,16 +95,21 @@
 }
 
 .profile__message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+    visibility: hidden;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.73px;
+    color: #3DDC84;
+    text-align: right;
     visibility: visible;
 }
 
 .profile__message_hidden {
     visibility: hidden;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 13.31px;
-    color: #fff;
-    text-align: right;
 }
 
 @media (max-width: 1024px) {

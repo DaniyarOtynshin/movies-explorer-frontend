@@ -3,17 +3,27 @@ import React, { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard"
 
 const MoviesCardList = (props) => {
-    const [movies, setMovies] = useState([]);
+    const [localMovies, setLocalMovies] = useState([]);
     const [isMoreHidden, setIsMoreHidden] = useState(false);
     const [loadIndex, setLoadIndex] = useState(11);
     const [loadMovies, setLoadMovies] = useState(4);
 
+    const {
+        savedMovies,
+        movies,
+        handleMovie,
+        isFiltered,
+        setMoviesLocalStorage,
+        setSavedMoviesLocalStorage,
+        isSaved,
+    } = props
+
     const handleIsChecked = (id) => {
-        return props.savedMovies.some((savedMovie) => savedMovie.movieId === id);
+        return savedMovies.some((savedMovie) => savedMovie.movieId === id);
     }
 
     const findSavedMovieId = (id) => {
-        return props.savedMovies.find((savedMovie) => savedMovie.movieId === id);
+        return savedMovies.find((savedMovie) => savedMovie.movieId === id);
     }
 
     const handleImage = (movieData) => {
@@ -21,7 +31,7 @@ const MoviesCardList = (props) => {
     }
 
     const handleLoadMore = (moviesCount) => {
-        setLoadIndex((prevLoadiIndex) => prevLoadiIndex + moviesCount);
+        setLoadIndex((prevLoadIndex) => prevLoadIndex + moviesCount);
     }
 
     useEffect(() => {
@@ -47,43 +57,44 @@ const MoviesCardList = (props) => {
     }, [])
 
     useEffect(() => {
-        props.checkMoviesLocalStorage(setMovies);
-        props.checkSavedMoviesLocalStorage();
-    }, [props])
+        const handleSetMovies = (moviesToFilter, savedMovies) => {
+            setMoviesLocalStorage(moviesToFilter);
+            setSavedMoviesLocalStorage(savedMovies);
+        }
 
-    useEffect(() => {
         const showFilteredMovies = () => {
-            let moviesToFilter = props.movies;
-            moviesToFilter = props.isFiltered
+            let moviesToFilter = movies;
+            moviesToFilter = isFiltered
             ? moviesToFilter.filter((movie) => movie.duration <= 40)
             : moviesToFilter
-            setMovies(moviesToFilter);
+            setLocalMovies(moviesToFilter);
+            moviesToFilter.length !== 0 && handleSetMovies(moviesToFilter, savedMovies);
         }
 
         showFilteredMovies();
-    }, [props.isFiltered, props.movies, loadMovies])
+    }, [isFiltered, movies, loadMovies, savedMovies, setMoviesLocalStorage, setSavedMoviesLocalStorage])
 
     useEffect(() => {
         const showLoadMoreButton = () => {
-            movies.length <= loadIndex + 1 ? setIsMoreHidden(true) : setIsMoreHidden(false);
+            localMovies.length <= loadIndex + 1 ? setIsMoreHidden(true) : setIsMoreHidden(false);
         }
 
         showLoadMoreButton()
-    }, [movies.length, loadIndex])
+    }, [localMovies.length, loadIndex])
 
     return (
         <div className="movies-card-list page__section">
             {
-                movies.length === 0
+                localMovies.length === 0
                 ? <p className="movies-card-list__not-found">Ничего не найдено :(</p>
-                : movies.map((movieData, index) => {
+                : localMovies.map((movieData, index) => {
                     return index <= loadIndex && (
                         <MoviesCard
                             key={movieData.id}
                             movieData={movieData}
                             trailerLink={movieData.trailerLink}
-                            handleMovie={props.handleMovie}
-                            isSaved={props.isSaved}
+                            handleMovie={handleMovie}
+                            isSaved={isSaved}
                             name={movieData.nameRU}
                             image={handleImage(movieData)}
                             duration={movieData.duration}

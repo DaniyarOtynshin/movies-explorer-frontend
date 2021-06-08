@@ -18,6 +18,7 @@ const Profile = (props) => {
 
     const handleEdit = (e) => {
         e.preventDefault();
+        props.handleSuccessMessage(false);
         setIsEdit(true);
     }
 
@@ -65,7 +66,7 @@ const Profile = (props) => {
                     </label>
                     <button onClick={isEdit ? handleEditSubmit : handleEdit} className="profile__button">
                         {isEdit ? 'Сохранить' : 'Редактировать'}
-                        <span className={props.showMessage ? 'profile__message' : 'profile__message_hidden'}>Сохранено</span>
+                        <span className={props.showMessage ? 'profile__message' : 'profile__message profile__message_hidden'}>Сохранено</span>
                     </button>
                 </form>
                 <button onClick={props.onSignOut} className="profile__exit-button">Выйти из аккаунта</button>

@@ -22,6 +22,8 @@ function App() {
     const [movies, setMovies] = useState([]);
     const [savedMovies, setSavedMovies] = useState([]);
     const [isFiltered, setIsFiltered] = useState(false);
+    const [showMessage, setShowMessage] = useState(false);
+    const [isDataInLocalStorage, setIsDataInLocalStorage] = useState(false);
 
     const history = useHistory();
 
@@ -54,10 +56,8 @@ function App() {
         history.push('/signin');
     };
 
-    const showMessage = (result) => result;
-
-    const handleSuccessMessage = () => {
-        showMessage(true);
+    const handleSuccessMessage = (result) => {
+        setShowMessage(result);
     }
 
     const onEditProfile = ({ email, name }) => {
@@ -72,32 +72,47 @@ function App() {
             })
     }
 
-    const checkMoviesLocalStorage = (setMovies) => {
-        const movies = localStorage.getItem('movies');
-        if (movies) {
-            setMovies(movies);
-            setMoviesLocalStorage(movies)
+    const checkMoviesLocalStorage = () => {
+        let movies = localStorage.getItem('movies');
+        movies = JSON.parse(movies);
+        if (!movies) {
+            setIsDataInLocalStorage(false);
+            return null;
         }
+        setIsDataInLocalStorage(true);
+        return movies;
     }
 
     const setMoviesLocalStorage = (movies) => {
-        localStorage.setItem('movies', movies)
+        const moviesToJSON = JSON.stringify(movies);
+        localStorage.setItem('movies', moviesToJSON);
+    }
+
+    const clearMoviesLocalStorage = () => {
+        localStorage.removeItem('movies')
+    }
+
+    const clearSavedMoviesLocalStorage = () => {
+        localStorage.removeItem('savedMovies')
     }
 
     const checkSavedMoviesLocalStorage = () => {
-        const savedMovies = localStorage.getItem('savedMovies');
+        let savedMovies = localStorage.getItem('savedMovies');
+        savedMovies = JSON.parse(savedMovies);
         if (savedMovies) {
             setSavedMovies(savedMovies);
             setSavedMoviesLocalStorage(savedMovies)
         }
     }
 
-    const setSavedMoviesLocalStorage = () => {
-        localStorage.setItem('savedMovies', savedMovies)
+    const setSavedMoviesLocalStorage = (savedMovies) => {
+        const savedMoviesToJSON = JSON.stringify(savedMovies);
+        localStorage.setItem('savedMovies', savedMoviesToJSON);
     }
 
     const checkIsFilteredLocalStorage = () => {
-        const isFiltered = localStorage.getItem('isFiltered');
+        let isFiltered = localStorage.getItem('isFiltered');
+        isFiltered = isFiltered === 'true';
         setIsFiltered(isFiltered);
         setIsFilteredLocalStorage(isFiltered);
     }
@@ -146,6 +161,9 @@ function App() {
 
     const onMovieSearchSubmit = (e, searchValues) => {
         e.preventDefault();
+        clearMoviesLocalStorage();
+        clearSavedMoviesLocalStorage();
+        setIsDataInLocalStorage(false);
         setIsLoading(true);
         const token = localStorage.getItem('token');
         Promise.all([
@@ -165,7 +183,8 @@ function App() {
     };
 
     const toggleFilter = () => {
-        setIsFiltered((prevIsFiltered) => !prevIsFiltered)
+        setIsFiltered((prevIsFiltered) => !prevIsFiltered);
+        setIsFilteredLocalStorage(!isFiltered);
     }
 
     useEffect(() => {
@@ -207,6 +226,7 @@ function App() {
                             checkSavedMoviesLocalStorage={checkSavedMoviesLocalStorage}
                             setSavedMoviesLocalStorage={setSavedMoviesLocalStorage}
                             checkIsFilteredLocalStorage={checkIsFilteredLocalStorage}
+                            isDataInLocalStorage={isDataInLocalStorage}
                             component={Movies}
                         />
                         <ProtectedRoute
@@ -221,9 +241,12 @@ function App() {
                             onMovieSearchSubmit={onMovieSearchSubmit}
                             handleFilter={toggleFilter}
                             isFiltered={isFiltered}
+                            checkMoviesLocalStorage={checkMoviesLocalStorage}
+                            setMoviesLocalStorage={setMoviesLocalStorage}
                             checkSavedMoviesLocalStorage={checkSavedMoviesLocalStorage}
                             setSavedMoviesLocalStorage={setSavedMoviesLocalStorage}
                             checkIsFilteredLocalStorage={checkIsFilteredLocalStorage}
+                            isDataInLocalStorage={isDataInLocalStorage}
                             component={Movies}
                         />
                         <ProtectedRoute
@@ -233,6 +256,7 @@ function App() {
                             loggedIn={loggedIn}
                             component={Profile}
                             onEditProfile={onEditProfile}
+                            handleSuccessMessage={handleSuccessMessage}
                             showMessage={showMessage}
                         />
                         <Route path="/signup" render={() => {

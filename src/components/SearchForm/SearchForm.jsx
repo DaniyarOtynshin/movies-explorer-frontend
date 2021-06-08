@@ -1,15 +1,10 @@
 import findPath from '../../images/search.svg';
 import FilterCheckBox from '../FilterCheckBox/FilterCheckBox';
 import { useFormWithValidation } from "../../hooks/useForm";
-import { useEffect } from 'react';
 
 const SearchForm = ({onSubmit, isFiltered, handleFilter, setIsRequested, checkIsFilteredLocalStorage}) => {
 
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
-
-    useEffect(() => {
-        checkIsFilteredLocalStorage()
-    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +32,11 @@ const SearchForm = ({onSubmit, isFiltered, handleFilter, setIsRequested, checkIs
             <span className="form-input__error form-input__error_active">
                 {errors.search || ""}
             </span>
-            <FilterCheckBox isFiltered={isFiltered} handleFilter={handleFilter} />
+            <FilterCheckBox
+                isFiltered={isFiltered}
+                handleFilter={handleFilter}
+                checkIsFilteredLocalStorage={checkIsFilteredLocalStorage}
+            />
         </form>
     )
 };
