@@ -1,8 +1,7 @@
 .movies-card-list {
     min-height: 458px;
-    padding: 70px 0 0;
+    padding: 70px 30px 0;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 32px;
 }
@@ -13,6 +12,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.movies-card-list__not-found {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.5;
+    margin: 0 auto;
+    color: #8B8B8B;
+}
+
+.movies-card-list__more._hidden {
+    display: none;
 }
 
 .more__button {

@@ -6,6 +6,7 @@
     align-items: center;
     min-height: 100vh;
     max-width: 410px;
+    width: 100%;
 }
 
 .profile__welcome {
@@ -28,7 +29,6 @@
 
 .profile__input {
     width: 100%;
-    height: 16px;
     border: 0;
     background-color: transparent;
     padding: 0 0 16px;
@@ -60,6 +60,7 @@
     font-size: 13px;
     line-height: 15.73px;
     color: #fff;
+    position: relative;
 }
 
 .profile__button:hover {
@@ -91,6 +92,24 @@
 .profile__input_bottom {
     padding: 16px 0 0;
     border: none;
+}
+
+.profile__message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+    visibility: hidden;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.73px;
+    color: #3DDC84;
+    text-align: right;
+    visibility: visible;
+}
+
+.profile__message_hidden {
+    visibility: hidden;
 }
 
 @media (max-width: 1024px) {

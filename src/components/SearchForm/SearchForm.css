@@ -60,6 +60,14 @@
     cursor: pointer;
 }
 
+.search-form__button_disabled {
+    background-color: #aeafb1;
+}
+
+.search-form__button_disabled:hover {
+    opacity: 1;
+}
+
 @media (max-width: 738px) {
     .search-form__input {
         margin: 98px 0 0;
